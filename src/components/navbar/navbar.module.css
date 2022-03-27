@@ -1,0 +1,15 @@
+.nav {
+  padding: 1rem;
+}
+.logowrapper {
+  margin: 1rem;
+  cursor: pointer;
+}
+.navheading {
+  display: inline-block;
+  font-size: 2.5rem;
+}
+.loginIcon {
+  margin: 1rem 2rem;
+  cursor: pointer;
+}

@@ -1,51 +1,67 @@
+:root {
+  --COLOR-BACKGROUND: #010203;
+  --COLOR-BACKGROUND-LIGHTER: #1b1b1b;
+  --COLOR-PRIMARY: #ff8a8a;
+  --COLOR-DEFAULT-TEXT: #fff;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--COLOR-BACKGROUND);
+}
 .App {
-  text-align: center;
+  color: var(--COLOR-DEFAULT-TEXT);
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "nav nav nav nav"
+    "aside main main main";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
+.navbar {
+  grid-area: nav;
+  max-height: 30rem;
+  color: var(--COLOR-PRIMARY);
+  width: 100vw;
+  border-bottom: 3px solid var(--COLOR-BACKGROUND-LIGHTER);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  color: white;
+}
+.aside {
+  width: 20vw;
+  grid-area: aside;
+  height: 80vh;
+  background-color: var(--COLOR-BACKGROUND);
+  border-right: 2px solid var(--COLOR-BACKGROUND-LIGHTER);
+  min-height: 50vh;
+}
+.active {
+  /* background-color: var(--COLOR-PRIMARY); */
+  color: var(--COLOR-PRIMARY);
 }
 
-.App-link {
-  color: #61dafb;
+.main {
+  grid-area: main;
+  width: 80vw;
 }
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
-  display: flex;
-}
-
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+@media only screen and (max-width: 768px) {
+  .App {
+    grid-template-areas:
+      "nav nav nav nav"
+      "main main main main";
+  }
+  .aside {
+    display: block;
+    position: fixed;
+    top: 15vh;
+    z-index: 3;
+    width: 50%;
+    min-height: 100vh;
+    font-size: 2rem;
+    transition: all 500ms linear;
+  }
 }

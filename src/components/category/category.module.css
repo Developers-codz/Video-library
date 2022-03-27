@@ -1,0 +1,19 @@
+.categoryWrapper {
+  margin: 1rem 0 0 2rem;
+  display: block;
+  height: 10vh;
+  width: 35vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.category {
+  display: inline-block;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.hiddenInput {
+  visibility: hidden;
+}
