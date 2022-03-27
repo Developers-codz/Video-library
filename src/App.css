@@ -18,14 +18,15 @@ body {
   grid-gap: 10px;
   grid-template-areas:
     "nav nav nav nav"
-    "aside main main main";
+    "aside main main main"
+    "... main main main ";
 }
 
 .navbar {
   grid-area: nav;
   max-height: 30rem;
   color: var(--COLOR-PRIMARY);
-  width: 100vw;
+  width: 99%;
   border-bottom: 3px solid var(--COLOR-BACKGROUND-LIGHTER);
   display: flex;
   justify-content: space-between;
@@ -40,13 +41,12 @@ body {
   min-height: 50vh;
 }
 .active {
-  /* background-color: var(--COLOR-PRIMARY); */
   color: var(--COLOR-PRIMARY);
 }
 
 .main {
   grid-area: main;
-  width: 80vw;
+  width: 70vw;
 }
 @media only screen and (max-width: 768px) {
   .App {
