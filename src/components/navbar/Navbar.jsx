@@ -14,9 +14,9 @@ export const Navbar = () => {
           <span className={styles.logowrapper} onClick={clickHandler}>
             <StreamOutlinedIcon fontSize="large" />
           </span>
-          <span class={styles.navheading}>Play Arts</span>
+          <span className={styles.navheading}>Play Arts</span>
         </h1>
-        <span class={styles.loginIcon}>
+        <span className={styles.loginIcon}>
           <LoginTwoToneIcon fontSize="large" />
         </span>
       </div>

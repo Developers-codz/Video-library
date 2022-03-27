@@ -8,7 +8,7 @@ export const Category = () => {
         name="category"
         id="all"
       />
-      <label for="all" className={styles.category}>
+      <label htmlFor="all" className={styles.category}>
         All
       </label>
       <input
@@ -17,7 +17,7 @@ export const Category = () => {
         name="category"
         id="craftIdeas"
       />
-      <label for="craftIdeas" className={styles.category}>
+      <label htmlFor="craftIdeas" className={styles.category}>
         Craft Ideas
       </label>
       <input
@@ -26,7 +26,7 @@ export const Category = () => {
         name="category"
         id="paintings"
       />
-      <label for="paintings" className={styles.category}>
+      <label htmlFor="paintings" className={styles.category}>
         Paintings
       </label>
       <input
@@ -35,7 +35,7 @@ export const Category = () => {
         name="category"
         id="bestOutOfWaste"
       />
-      <label for="bestOutOfWaste" className={styles.category}>
+      <label htmlFor="bestOutOfWaste" className={styles.category}>
         Best out of waste
       </label>
     </div>

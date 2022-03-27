@@ -14,6 +14,9 @@
   border-radius: 10px;
   cursor: pointer;
 }
+.category:hover {
+  color: var(--COLOR-PRIMARY);
+}
 .hiddenInput {
   visibility: hidden;
 }
