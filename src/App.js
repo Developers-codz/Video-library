@@ -1,8 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import MockMan from "mockman-js";
-import { Navbar, Aside } from "./components";
-import { Home, Liked, History, Playlist } from "./page";
+import { Navbar, Aside } from "components";
+import { Home, Liked, History, Playlist } from "page";
 
 function App() {
   return (

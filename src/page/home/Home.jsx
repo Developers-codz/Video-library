@@ -1,7 +1,7 @@
 import styles from "./home.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Category } from "../../components";
+import { Category } from "components";
 
 export const Home = () => {
   const [videos, setVideos] = useState([]);

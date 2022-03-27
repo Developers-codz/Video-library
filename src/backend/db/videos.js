@@ -13,14 +13,14 @@ import {
   inrain,
   diy,
   emboidery,
-} from "../../Assets/gifs";
+} from "Assets/gifs";
 import {
   paintingIcon1,
   paintingIcon2,
   bestIcon,
   fiveminCraftthumbnail,
   handEmb,
-} from "../../Assets/thumbnail";
+} from "Assets/thumbnail";
 
 export const videos = [
   {

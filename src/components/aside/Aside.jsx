@@ -1,6 +1,6 @@
 import style from "./aside.module.css";
 import { NavLink } from "react-router-dom";
-import { useAside } from "../../context/aside-context";
+import { useAside } from "context/aside-context";
 export const Aside = () => {
   const { activeAside } = useAside();
   return (

@@ -1,7 +1,7 @@
 import styles from "./navbar.module.css";
 import StreamOutlinedIcon from "@mui/icons-material/StreamOutlined";
 import LoginTwoToneIcon from "@mui/icons-material/LoginTwoTone";
-import { useAside } from "../../context/aside-context";
+import { useAside } from "context/aside-context";
 export const Navbar = () => {
   const { setActiveAside } = useAside();
   const clickHandler = () => {
