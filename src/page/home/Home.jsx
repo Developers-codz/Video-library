@@ -1,25 +1,23 @@
 import styles from "./home.module.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useVideo } from "context/video-context";
 import { Category } from "components";
+import { getCategorisedVideos } from "functions";
 
 export const Home = () => {
-  const [videos, setVideos] = useState([]);
-  useEffect(async () => {
-    try {
-      const response = await axios.get("/api/videos");
-      console.log(response);
-      setVideos(response.data.videos);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-  console.log(videos);
+  const {
+    videos,
+    videoState: { categoryBy },
+  } = useVideo();
+
+  const categoryFilteredVideos = getCategorisedVideos(videos, categoryBy);
+
+  console.log(categoryFilteredVideos);
   return (
     <div>
       <Category />
       <div className={styles.cardContainer}>
-        {videos.map((video) => {
+        {categoryFilteredVideos.map((video) => {
           return (
             <div className={styles.videoCard} key={video._id}>
               <img src={video.gif} className={styles.image} />

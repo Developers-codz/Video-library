@@ -1,5 +1,7 @@
 import styles from "./category.module.css";
+import { useVideo } from "context/video-context";
 export const Category = () => {
+  const { videoDispatch } = useVideo();
   return (
     <div className={styles.categoryWrapper}>
       <input
@@ -7,6 +9,7 @@ export const Category = () => {
         type="radio"
         name="category"
         id="all"
+        onClick={() => videoDispatch({ type: "ALL" })}
       />
       <label htmlFor="all" className={styles.category}>
         All
@@ -16,6 +19,9 @@ export const Category = () => {
         type="radio"
         name="category"
         id="craftIdeas"
+        onClick={() =>
+          videoDispatch({ type: "CATEGORY", payload: "BY_CRAFT_IDEAS" })
+        }
       />
       <label htmlFor="craftIdeas" className={styles.category}>
         Craft Ideas
@@ -25,6 +31,9 @@ export const Category = () => {
         type="radio"
         name="category"
         id="paintings"
+        onClick={() =>
+          videoDispatch({ type: "CATEGORY", payload: "BY_PAINTINGS" })
+        }
       />
       <label htmlFor="paintings" className={styles.category}>
         Paintings
@@ -34,6 +43,12 @@ export const Category = () => {
         type="radio"
         name="category"
         id="bestOutOfWaste"
+        onClick={() =>
+          videoDispatch({
+            type: "CATEGORY",
+            payload: "BY_BEST_OUT_OF_WASTE",
+          })
+        }
       />
       <label htmlFor="bestOutOfWaste" className={styles.category}>
         Best out of waste
