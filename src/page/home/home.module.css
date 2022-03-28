@@ -1,0 +1,41 @@
+.cardContainer {
+  width: 75vw;
+  margin-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.videoCard {
+  width: 17rem;
+  height: 14rem;
+  border: 1px solid var(--COLOR-BACKGROUND-LIGHTER);
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+}
+.image {
+  width: inherit;
+  height: 70%;
+}
+.image:hover {
+  opacity: 0.6;
+}
+.videoDetail {
+  height: 30%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.videoThumbnail {
+  display: inline-block;
+  margin: 0 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.videoTitle {
+  text-align: start;
+  font-size: medium;
+}
+.views {
+  display: block;
+  font-size: 0.7rem;
+}

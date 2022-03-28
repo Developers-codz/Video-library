@@ -1,0 +1,14 @@
+.asideUl {
+  text-align: start;
+  font-size: large;
+  font-weight: 600;
+}
+.asideLink {
+  padding: 1rem 3rem 1rem 5rem;
+  cursor: pointer;
+  color: var(COLOR-DEFAULT-TEXT);
+}
+.asideLink:hover {
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  color: var(--COLOR-PRIMARY);
+}

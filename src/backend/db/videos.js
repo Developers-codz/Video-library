@@ -10,23 +10,40 @@ import {
   craftideas,
   sunset,
   bestoutofwaste,
-} from "../../Assets/gifs";
+  inrain,
+  diy,
+  emboidery,
+} from "Assets/gifs";
+import {
+  paintingIcon1,
+  paintingIcon2,
+  bestIcon,
+  fiveminCraftthumbnail,
+  handEmb,
+} from "Assets/thumbnail";
 
 export const videos = [
   {
     _id: uuid(),
-    title: "Pinting using Holi Colors",
-    gif: holi,
+    title: "Hand Embroidery",
+    gif: emboidery,
+    thumbnail: handEmb,
+    views: "543K",
+    creator: "Sentdex",
+    created: "6 Months",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "M.F Hussain",
-    categoryName: "Paintings",
+    categoryName: "Craft Ideas",
   },
+
   {
     _id: uuid(),
     title: "5 minutes crafts",
     gif: fivemincraft,
+    thumbnail: fiveminCraftthumbnail,
+    views: "299K",
     creator: "Sentdex",
+    created: "10 months",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Craft Ideas",
@@ -35,7 +52,10 @@ export const videos = [
     _id: uuid(),
     title: "Jumping Frog  crafts",
     gif: jumpingfrog,
+    thumbnail: bestIcon,
+    views: "25M",
     creator: "Sentdex",
+    created: "5 months",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Craft Ideas",
@@ -44,7 +64,10 @@ export const videos = [
     _id: uuid(),
     title: "11 easy craft Ideas",
     gif: craftideas,
+    thumbnail: bestIcon,
+    views: "30K",
     creator: "Sentdex",
+    created: "1 year",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Best Out of Waste",
@@ -53,7 +76,10 @@ export const videos = [
     _id: uuid(),
     title: "Best Out of Waste Craft Ideas",
     gif: bestoutofwaste,
+    thumbnail: fiveminCraftthumbnail,
+    views: "200K",
     creator: "Sentdex",
+    created: "11 months",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Best Out of Waste",
@@ -62,9 +88,48 @@ export const videos = [
     _id: uuid(),
     title: "Easy Golden Sunset Poster color Painting",
     gif: sunset,
+    thumbnail: paintingIcon2,
+    views: "1M",
     creator: "Sentdex",
+    created: "2 years",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    categoryName: "Paintings",
+  },
+  {
+    _id: uuid(),
+    title: "Best Of 2022 DIYs",
+    gif: diy,
+    thumbnail: fiveminCraftthumbnail,
+    views: "100K",
+    creator: "Sentdex",
+    created: "2 months",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    categoryName: "Best Out of Waste",
+  },
+  {
+    _id: uuid(),
+    title: "Walking in the Rain",
+    gif: inrain,
+    thumbnail: paintingIcon2,
+    views: "12K",
+    creator: "Sentdex",
+    created: "5 Days",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    categoryName: "Paintings",
+  },
+  {
+    _id: uuid(),
+    title: "Pinting using Holi Colors",
+    gif: holi,
+    thumbnail: paintingIcon1,
+    views: "1M",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    creator: "M.F Hussain",
+    created: "2 weeks",
     categoryName: "Paintings",
   },
 ];
