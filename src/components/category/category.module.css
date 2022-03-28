@@ -20,3 +20,11 @@
 .hiddenInput {
   visibility: hidden;
 }
+.hiddenInput:checked + .category {
+  color: var(--COLOR-PRIMARY);
+}
+@media only screen and (max-width: 768px) {
+  .categoryWrapper {
+    width: 100vw;
+  }
+}

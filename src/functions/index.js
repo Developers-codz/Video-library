@@ -1,1 +1,1 @@
-export { getCategorisedVideos } from "functions";
+export { getCategorisedVideos } from "./get-categorised-video";

@@ -1,5 +1,4 @@
 export const getCategorisedVideos = (data, categoryBy) => {
-  console.log(data);
   if (categoryBy && categoryBy === "BY_CRAFT_IDEAS") {
     return data.filter((video) => video.categoryName === "Craft Ideas");
   }

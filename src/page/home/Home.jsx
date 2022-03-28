@@ -3,16 +3,23 @@ import { useEffect, useState } from "react";
 import { useVideo } from "context/video-context";
 import { Category } from "components";
 import { getCategorisedVideos } from "functions";
+import axios from "axios";
 
 export const Home = () => {
   const {
-    videos,
     videoState: { categoryBy },
   } = useVideo();
+  const [videos, setVideos] = useState([]);
+  useEffect(async () => {
+    try {
+      const response = await axios.get("/api/videos");
+      setVideos(response.data.videos);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const categoryFilteredVideos = getCategorisedVideos(videos, categoryBy);
-
-  console.log(categoryFilteredVideos);
   return (
     <div>
       <Category />

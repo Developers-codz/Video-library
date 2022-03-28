@@ -57,7 +57,7 @@ body {
   .aside {
     display: block;
     position: fixed;
-    top: 15vh;
+    top: 13vh;
     z-index: 3;
     width: 50%;
     min-height: 100vh;
