@@ -12,12 +12,13 @@ export const Aside = () => {
         style={activeAside ? { left: "0%" } : { left: "-50%" }}
       >
         <ul className={style.asideUl}>
-          {asideData.map(({ name, linkTo }) => {
+          {asideData.map(({ id, name, linkTo }) => {
             return (
               <NavLink
                 className="decor-none light-text"
                 exact="true"
                 to={linkTo}
+                key={id}
               >
                 <li className={style.asideLink}>{name}</li>
               </NavLink>

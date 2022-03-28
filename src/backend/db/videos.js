@@ -34,11 +34,12 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Craft Ideas",
+    videoLink: "wmT9YXuwMiQ",
   },
 
   {
     _id: uuid(),
-    title: "5 minutes crafts",
+    title: "35 UNUSUAL PAPER CRAFT YOU WILL ADORE",
     gif: fivemincraft,
     thumbnail: fiveminCraftthumbnail,
     views: "299K",
@@ -47,6 +48,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Craft Ideas",
+    videoLink: "SF71ks5FrKQ",
   },
   {
     _id: uuid(),
@@ -59,6 +61,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Craft Ideas",
+    videoLink: "fCiq-a-l-tw",
   },
   {
     _id: uuid(),
@@ -71,6 +74,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Best Out of Waste",
+    videoLink: "v=xTzkrm63AIQ",
   },
   {
     _id: uuid(),
@@ -83,6 +87,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Best Out of Waste",
+    videoLink: "K0t3BsDyldc",
   },
   {
     _id: uuid(),
@@ -95,6 +100,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Paintings",
+    videoLink: "sMJH58Ql1Ik",
   },
   {
     _id: uuid(),
@@ -107,6 +113,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Best Out of Waste",
+    videoLink: "v=3gJL0w3kmk0",
   },
   {
     _id: uuid(),
@@ -119,10 +126,11 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     categoryName: "Paintings",
+    videoLink: "v=kZNC6k5YVsc",
   },
   {
     _id: uuid(),
-    title: "Pinting using Holi Colors",
+    title: "Painting using Holi Colors",
     gif: holi,
     thumbnail: paintingIcon1,
     views: "1M",
@@ -131,5 +139,6 @@ export const videos = [
     creator: "M.F Hussain",
     created: "2 weeks",
     categoryName: "Paintings",
+    videoLink: "v=ryn9IKqIUQ0",
   },
 ];
