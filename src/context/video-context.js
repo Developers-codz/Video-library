@@ -17,7 +17,7 @@ const VideoProvider = ({ children }) => {
       const response = await axios.get("/api/videos");
       setVideos(response.data.videos);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }, []);
   const [videoState, videoDispatch] = useReducer(videoReducer, {
