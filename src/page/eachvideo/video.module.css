@@ -28,3 +28,9 @@
 .videoActionBtn:hover {
   transform: scale(1.07, 1.07);
 }
+@media only screen and (max-width: 768px) {
+  .iframe {
+    margin-left: 1rem;
+    width: 100%;
+  }
+}
