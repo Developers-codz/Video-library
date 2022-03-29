@@ -1,0 +1,36 @@
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+.iframeWrapper {
+  text-align: center;
+}
+.iframe {
+  width: 50rem;
+  height: 28rem;
+}
+.videoPageName,
+.videoDescription {
+  padding: 1rem 2rem;
+}
+.videoBtnWrapper {
+  display: flex;
+  justify-content: end;
+  margin-right: 2rem;
+}
+.videoActionBtn {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.videoActionBtn:hover {
+  transform: scale(1.07, 1.07);
+}
+@media only screen and (max-width: 768px) {
+  .iframe {
+    margin-left: 1rem;
+    width: 100%;
+  }
+}
