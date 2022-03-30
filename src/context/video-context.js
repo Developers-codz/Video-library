@@ -5,6 +5,7 @@ import {
   useState,
   useEffect,
 } from "react";
+import { VIDEO_API } from "utils/apis";
 import { videoReducer } from "reducer";
 import axios from "axios";
 
@@ -14,7 +15,7 @@ const VideoProvider = ({ children }) => {
   const [videos, setVideos] = useState([]);
   useEffect(async () => {
     try {
-      const response = await axios.get("/api/videos");
+      const response = await axios.get(VIDEO_API);
       setVideos(response.data.videos);
     } catch (err) {
       console.error(err);

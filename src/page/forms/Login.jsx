@@ -1,7 +1,8 @@
 import styles from "./form.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { useAuth } from "context/auth-context";
+import { Toast } from "components";
 export const Login = () => {
   const formObj = {
     email: "",
@@ -9,12 +10,18 @@ export const Login = () => {
   };
   const [formData, setFormData] = useState(formObj);
   const [type, setType] = useState("password");
-  const formDataHandler = (e) => {
+  const { loginHandler } = useAuth();
+  const changeHandler = (e) => {
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
   };
-  var classNames = require("classnames");
+  const submitHandler = (e) => {
+    e.preventDefault();
+    loginHandler(e, formData);
+  };
+
   return (
     <div className={styles.formWrapper}>
+      <Toast />
       <h2 className="mb-lg">Login Now:</h2>
       <form className={styles.formContainer}>
         <input
@@ -23,7 +30,7 @@ export const Login = () => {
           value={formData.email}
           id="email"
           placeholder="janeDoe@gmail.com"
-          onInput={(e) => formDataHandler(e)}
+          onChange={(e) => changeHandler(e)}
         />
         <div className={styles.passInputWrapper}>
           <input
@@ -33,7 +40,7 @@ export const Login = () => {
             value={formData.password}
             id="password"
             placeholder="Password"
-            onInput={(e) => formDataHandler(e)}
+            onChange={(e) => changeHandler(e)}
           />
           {type === "password" ? (
             <i className="fa fa-eye eye" onClick={() => setType("text")}></i>
@@ -45,8 +52,16 @@ export const Login = () => {
           )}
         </div>
 
-        <button className={styles.submitBtn}>Login with credentials</button>
-        <button className={styles.submitBtn}>Login</button>
+        <button className={styles.submitBtn} onClick={(e) => submitHandler(e)}>
+          Login with credentials
+        </button>
+        <button
+          className={styles.submitBtn}
+          value="login"
+          onClick={(e) => submitHandler(e)}
+        >
+          Login
+        </button>
         <div className={styles.linkWrapper}>
           Don't have an account{" "}
           <Link to="/signup" className="light-text">
