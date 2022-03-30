@@ -2,12 +2,18 @@ import styles from "./navbar.module.css";
 import StreamOutlinedIcon from "@mui/icons-material/StreamOutlined";
 import LoginTwoToneIcon from "@mui/icons-material/LoginTwoTone";
 import { useAside } from "context/aside-context";
+import { useAuth } from "context/auth-context";
+import { UserIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 export const Navbar = () => {
   const { setActiveAside } = useAside();
   const clickHandler = () => {
     setActiveAside((status) => !status);
   };
+  const {
+    authState: { authToken },
+  } = useAuth();
+  console.log(authToken);
   return (
     <>
       <div className="navbar">
@@ -17,11 +23,19 @@ export const Navbar = () => {
           </span>
           <span className={styles.navheading}>Play Arts</span>
         </h1>
-        <Link to="/login">
-          <span className={styles.loginIcon}>
-            <LoginTwoToneIcon fontSize="large" />
-          </span>
-        </Link>
+        {authToken === "" ? (
+          <Link to="/login">
+            <span className={styles.loginIcon}>
+              <LoginTwoToneIcon fontSize="large" />
+            </span>
+          </Link>
+        ) : (
+          <Link to="/profile">
+            <span className={styles.loginIcon}>
+              <UserIcon />
+            </span>
+          </Link>
+        )}
       </div>
     </>
   );

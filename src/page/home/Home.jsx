@@ -6,6 +6,7 @@ import { getCategorisedVideos } from "functions";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 
 export const Home = () => {
+  
   const param = useParams();
   let id = param.videoId;
   const {

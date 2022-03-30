@@ -91,10 +91,29 @@ const AuthProvider = ({ children }) => {
       );
     }
   };
+  const logoutHandler = () => {
+    setToastVal((prevVal) => ({
+      ...prevVal,
+      msg: "logged out successfully",
+      isOpen: true,
+      bg: "red",
+    }));
+    setTimeout(
+      () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
+      1000
+    );
+    authDispatch({ type: "LOGOUT" });
+  };
 
   return (
     <AuthContext.Provider
-      value={{ authState, authDispatch, signupHandler, loginHandler }}
+      value={{
+        authState,
+        authDispatch,
+        signupHandler,
+        loginHandler,
+        logoutHandler,
+      }}
     >
       {children}
     </AuthContext.Provider>
