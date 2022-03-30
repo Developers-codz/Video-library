@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
 import { Navbar, Aside } from "components";
-import { Home, Liked, History, Playlist, Video } from "page";
+import { Home, Liked, History, Playlist, Video, Login, Signup } from "page";
 
 function App() {
   return (
@@ -20,6 +20,8 @@ function App() {
         <Route path="/history" element={<History />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/mockman" element={<MockMan />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );
