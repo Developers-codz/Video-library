@@ -28,10 +28,6 @@ const AuthProvider = ({ children }) => {
         msg: "Successfully Signed up",
         isOpen: true,
       }));
-      setTimeout(
-        () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-        1500
-      );
     } catch (err) {
       setToastVal((prevVal) => ({
         ...prevVal,
@@ -39,10 +35,6 @@ const AuthProvider = ({ children }) => {
         msg: "error signing up",
         isOpen: true,
       }));
-      setTimeout(
-        () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-        1500
-      );
     }
     setFormData(formObj);
   };
@@ -68,10 +60,7 @@ const AuthProvider = ({ children }) => {
         isOpen: true,
         bg: "green",
       }));
-      setTimeout(
-        () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-        1000
-      );
+
       authDispatch({
         type: "LOGGED_IN",
         payload: foundUser,
@@ -84,10 +73,6 @@ const AuthProvider = ({ children }) => {
         msg: "no such user found",
         isOpen: true,
       }));
-      setTimeout(
-        () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-        1500
-      );
     }
   };
   const logoutHandler = () => {
@@ -97,10 +82,7 @@ const AuthProvider = ({ children }) => {
       isOpen: true,
       bg: "red",
     }));
-    setTimeout(
-      () => setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-      1000
-    );
+
     authDispatch({ type: "LOGOUT" });
   };
 

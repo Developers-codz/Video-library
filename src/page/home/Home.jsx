@@ -1,12 +1,11 @@
 import styles from "./home.module.css";
 
 import { useVideo } from "context/video-context";
-import { Category } from "components";
+import { Category, Toast } from "components";
 import { getCategorisedVideos } from "functions";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 
 export const Home = () => {
-  
   const param = useParams();
   let id = param.videoId;
   const {
@@ -18,6 +17,7 @@ export const Home = () => {
 
   return id === undefined ? (
     <div>
+      <Toast />
       <Category />
       <div className={styles.cardContainer}>
         {categoryFilteredVideos.map((video) => {
