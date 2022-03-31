@@ -13,7 +13,6 @@ export const Navbar = () => {
   const {
     authState: { authToken },
   } = useAuth();
-  console.log(authToken);
   return (
     <>
       <div className="navbar">

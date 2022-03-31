@@ -35,9 +35,7 @@
 .linkWrapper {
   margin: 1rem 0;
 }
-.passInput {
-  position: relative;
-}
+.passInput,
 .passInputWrapper {
   position: relative;
 }
