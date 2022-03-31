@@ -42,6 +42,7 @@ body {
 }
 .active {
   color: var(--COLOR-PRIMARY);
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
 }
 
 .main {
