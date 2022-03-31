@@ -79,6 +79,7 @@ const AuthProvider = ({ children }) => {
         token: encodedToken,
       });
     } catch (err) {
+      console.log(err);
       setToastVal((prevVal) => ({
         ...prevVal,
         bg: "red",
