@@ -1,8 +1,17 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
-import { Navbar, Aside } from "components";
-import { Home, Liked, History, Playlist, Video } from "page";
+import { Navbar, Aside, ProtectedRoute, PublicRoute } from "components";
+import {
+  Home,
+  Liked,
+  History,
+  Playlist,
+  Video,
+  Login,
+  Signup,
+  Profile,
+} from "page";
 
 function App() {
   return (
@@ -16,10 +25,19 @@ function App() {
           <Route path=":videoId" element={<Video />} />
         </Route>
 
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/liked" element={<Liked />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/playlist" element={<Playlist />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/liked" element={<Liked />} />
+          <Route path="/profile" element={<Profile />}>
+            <Route path=":profileAction" element={<Profile />} />
+          </Route>
+        </Route>
         <Route path="/mockman" element={<MockMan />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
       </Routes>
     </div>
   );

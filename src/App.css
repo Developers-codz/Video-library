@@ -48,6 +48,16 @@ body {
   grid-area: main;
   width: 70vw;
 }
+.eye {
+  position: fixed;
+  cursor: pointer;
+}
+.eye {
+  top: 18.1rem;
+}
+.pass {
+  top: 24rem;
+}
 @media only screen and (max-width: 768px) {
   .App {
     grid-template-areas:

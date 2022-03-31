@@ -1,0 +1,44 @@
+.profileWrapper {
+  margin: 10rem 0 0 0;
+  height: 9rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.leftPane {
+  border-right: 2px solid var(--COLOR-BACKGROUND-LIGHTER);
+}
+.rightPane {
+  width: 30rem;
+  text-align: start;
+}
+.listWrapper {
+  list-style: none;
+  font-size: 1.4rem;
+}
+.listWrapper > li {
+  padding: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.userDetail {
+  border-bottom: 2px solid var(--COLOR-BACKGROUND-LIGHTER);
+}
+.rightPane > h3 {
+  padding: 1rem;
+}
+.rightPane > button {
+  margin: 1rem 0 0 2rem;
+  cursor: pointer;
+  padding: 0.5rem 3rem;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  color: var(--COLOR-PRIMARY);
+  border: 2px solid var(--COLOR-PRIMARY);
+}
+.emailRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}

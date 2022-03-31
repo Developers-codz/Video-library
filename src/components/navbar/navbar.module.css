@@ -12,6 +12,7 @@
 .loginIcon {
   margin: 1rem 2rem;
   cursor: pointer;
+  color: var(--COLOR-PRIMARY);
 }
 @media only screen and (max-width: 768px) {
   .logowrapper {
