@@ -2,7 +2,6 @@ import styles from "./aside.module.css";
 import { NavLink } from "react-router-dom";
 import { useAside } from "context/aside-context";
 import { asideData } from "data";
-import { Home } from "Assets/icons";
 
 export const Aside = () => {
   const { activeAside } = useAside();
@@ -10,7 +9,7 @@ export const Aside = () => {
     <>
       <div
         className="aside"
-        styles={activeAside ? { left: "0%" } : { left: "-50%" }}
+        style={activeAside ? { left: "0%" } : { left: "-50%" }}
       >
         <ul className={styles.asideUl}>
           {asideData.map(({ id, name, linkTo, icon }) => {
