@@ -33,7 +33,6 @@ const AuthProvider = ({ children }) => {
         1500
       );
     } catch (err) {
-      console.log(err);
       setToastVal((prevVal) => ({
         ...prevVal,
         bg: "red",
@@ -79,11 +78,10 @@ const AuthProvider = ({ children }) => {
         token: encodedToken,
       });
     } catch (err) {
-      console.log(err);
       setToastVal((prevVal) => ({
         ...prevVal,
         bg: "red",
-        msg: "error signing up",
+        msg: "no such user found",
         isOpen: true,
       }));
       setTimeout(
