@@ -31,8 +31,8 @@ function App() {
           <Route path="/profile" element={<Profile />}>
             <Route path=":profileAction" element={<Profile />} />
           </Route>
+          <Route path="/liked" element={<Liked />} />
         </Route>
-        <Route path="/liked" element={<Liked />} />
         <Route path="/mockman" element={<MockMan />} />
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />

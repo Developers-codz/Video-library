@@ -10,6 +10,7 @@ import { likedReducer } from "reducer/liked-reducer";
 import { useAuth } from "./auth-context";
 import axios from "axios";
 import { ADD_LIKED_API } from "utils/apis";
+import { useToast } from "./toast-context";
 
 const LikeContext = createContext();
 
@@ -20,6 +21,7 @@ const LikeProvider = ({ children }) => {
   const [likedState, likedDispatch] = useReducer(likedReducer, {
     likedList: [],
   });
+  const { setToastVal } = useToast();
 
   const addToLikeHandler = async (item) => {
     const encodedToken = localStorage.getItem("token");
@@ -35,10 +37,21 @@ const LikeProvider = ({ children }) => {
           },
         }
       );
-      console.log(response.data.likes);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "Added in liked videos",
+        isOpen: "true",
+        bg: "green",
+      }));
       likedDispatch({ type: "SET_LIKED", payload: response.data.likes });
     } catch (err) {
       console.log(err);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "Already in liked videos",
+        isOpen: "true",
+        bg: "Red",
+      }));
     }
   };
   const removeFromLikeHandler = async (_id) => {
@@ -53,7 +66,12 @@ const LikeProvider = ({ children }) => {
           },
         }
       );
-      console.log(response.data.likes);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "Removed from  liked videos",
+        isOpen: "true",
+        bg: "red",
+      }));
       likedDispatch({ type: "SET_LIKED", payload: response.data.likes });
     } catch (err) {
       console.log(err);

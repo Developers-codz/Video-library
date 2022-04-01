@@ -5,6 +5,7 @@ import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import BookmarkAddTwoToneIcon from "@mui/icons-material/BookmarkAddTwoTone";
 import FeaturedPlayListTwoToneIcon from "@mui/icons-material/FeaturedPlayListTwoTone";
 import { useLike } from "context/like-context";
+import { Toast } from "components";
 export const Video = () => {
   const { videos } = useVideo();
   const { addToLikeHandler } = useLike();
@@ -24,6 +25,7 @@ export const Video = () => {
 
   return (
     <div className={styles.videoContainer}>
+      <Toast />
       <div className={styles.iframeWrapper}>
         <iframe
           className={styles.iframe}

@@ -27,8 +27,9 @@ export const LikedCard = ({ item }) => {
           </span>
         </div>
         <div className={styles.iconWrapper} onClick={clickHandler}>
-          <ThumbUpTwoToneIcon />
-          
+          <div>
+            <ThumbUpTwoToneIcon />
+          </div>
         </div>
       </div>
       {showMenu && (

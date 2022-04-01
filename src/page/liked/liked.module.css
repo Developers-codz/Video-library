@@ -44,12 +44,12 @@
   display: flex;
   justify-content: space-between;
 }
-.iconWrapper {
+.iconWrapper > div {
   padding: 0.7rem 0.9rem;
   margin-right: 0.4rem;
   margin-top: 0.2rem;
 }
-.iconWrapper:hover {
+.iconWrapper > div:hover {
   background-color: var(--COLOR-BACKGROUND-LIGHTER);
   border-radius: 50%;
 }
