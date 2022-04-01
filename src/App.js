@@ -28,11 +28,11 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/playlist" element={<Playlist />} />
           <Route path="/history" element={<History />} />
-          <Route path="/liked" element={<Liked />} />
           <Route path="/profile" element={<Profile />}>
             <Route path=":profileAction" element={<Profile />} />
           </Route>
         </Route>
+        <Route path="/liked" element={<Liked />} />
         <Route path="/mockman" element={<MockMan />} />
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />

@@ -6,6 +6,7 @@ import { AsideProvider } from "context/aside-context";
 import { VideoProvider } from "context/video-context";
 import { AuthProvider } from "context/auth-context";
 import { ToastProvider } from "context/toast-context";
+import { LikeProvider } from "context/like-context";
 import App from "App";
 import { makeServer } from "server";
 
@@ -17,11 +18,13 @@ ReactDOM.render(
     <Router>
       <ToastProvider>
         <AuthProvider>
-          <VideoProvider>
-            <AsideProvider>
-              <App />
-            </AsideProvider>
-          </VideoProvider>
+          <LikeProvider>
+            <VideoProvider>
+              <AsideProvider>
+                <App />
+              </AsideProvider>
+            </VideoProvider>
+          </LikeProvider>
         </AuthProvider>
       </ToastProvider>
     </Router>

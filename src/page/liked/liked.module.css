@@ -1,0 +1,103 @@
+.cardContainer {
+  width: 75vw;
+  margin-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.videoCard {
+  width: 17rem;
+  height: 15rem;
+  border: 1px solid var(--COLOR-BACKGROUND-LIGHTER);
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.image {
+  width: 100%;
+  height: 60%;
+}
+.image:hover {
+  opacity: 0.6;
+}
+.videoDetail {
+  height: 40%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.videoThumbnail {
+  display: inline-block;
+  margin: 0 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.videoTitle {
+  text-align: start;
+  font-size: medium;
+}
+.views {
+  display: block;
+  font-size: 0.7rem;
+}
+.videoDetailWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.iconWrapper {
+  padding: 0.7rem 0.9rem;
+  margin-right: 0.4rem;
+  margin-top: 0.2rem;
+}
+.iconWrapper:hover {
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  border-radius: 50%;
+}
+.toggleMenu {
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  display: flex;
+  flex-direction: column;
+  margin-top: -1rem;
+  position: absolute;
+  left: 6rem;
+}
+.toggleMenu > button {
+  background: none;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+.toggleMenu > button:hover {
+  background-color: var(--COLOR-BACKGROUND);
+  color: var(--COLOR-PRIMARY);
+}
+.emptyLikeContainer {
+  text-align: center;
+}
+.emptyLikeContainer > * {
+  padding: 1rem 0;
+}
+.exploreBtn {
+  display: inline-block;
+  margin: 2rem 0rem 0rem 0rem;
+  padding: 0.8rem 3rem;
+  border: 2px solid var(--COLOR-PRIMARY);
+  background-color: var(--COLOR-BACKGROUND);
+  color: var(--COLOR-PRIMARY);
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.exploreBtn:hover {
+  transform: scale(1.02, 1.02);
+}
+@media only screen and (max-width: 768px) {
+  .cardContainer {
+    width: 100%;
+  }
+  .videoCard {
+    padding: 1rem auto;
+  }
+}

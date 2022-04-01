@@ -1,4 +1,4 @@
-import { Home, Playlist, Liked, History } from "Assets/icons";
+import { Home, Playlist, LikedIcon, History } from "Assets/icons";
 export const asideData = [
   {
     id: 1,
@@ -24,6 +24,6 @@ export const asideData = [
     id: 4,
     name: "Liked",
     linkTo: "liked",
-    icon: <Liked />,
+    icon: <LikedIcon width="32" height="32" />,
   },
 ];
