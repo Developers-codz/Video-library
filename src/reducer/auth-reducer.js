@@ -6,9 +6,6 @@ export const userInitialState = {
   isAuthTokenPresent: false,
   authToken: "",
   msg: "",
-  likes: [],
-  history: [],
-  playlists: [],
 };
 
 export const authReducer = (state, action) => {
