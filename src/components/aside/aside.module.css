@@ -1,14 +1,18 @@
 .asideUl {
-  text-align: start;
-  font-size: large;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 .asideLink {
-  padding: 1rem 3rem 1rem 5rem;
   cursor: pointer;
   color: var(COLOR-DEFAULT-TEXT);
+  display: flex;
+  justify-content: start;
+  padding: 1rem;
 }
 .asideLink:hover {
   background-color: var(--COLOR-BACKGROUND-LIGHTER);
   color: var(--COLOR-PRIMARY);
+}
+.navLinkName {
+  margin-left: 1rem;
 }

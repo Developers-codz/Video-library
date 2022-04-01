@@ -4,9 +4,11 @@ import styles from "./video.module.css";
 import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import BookmarkAddTwoToneIcon from "@mui/icons-material/BookmarkAddTwoTone";
 import FeaturedPlayListTwoToneIcon from "@mui/icons-material/FeaturedPlayListTwoTone";
+import { useLike } from "context/like-context";
+import { Toast } from "components";
 export const Video = () => {
   const { videos } = useVideo();
-  console.log(videos);
+  const { addToLikeHandler } = useLike();
   let params = useParams();
   const getVideo = (id) => videos.find(({ _id }) => _id === id);
   let video = getVideo(params.videoId, 10);
@@ -23,6 +25,7 @@ export const Video = () => {
 
   return (
     <div className={styles.videoContainer}>
+      <Toast />
       <div className={styles.iframeWrapper}>
         <iframe
           className={styles.iframe}
@@ -37,7 +40,10 @@ export const Video = () => {
         </small>
       </div>
       <div className={styles.videoBtnWrapper}>
-        <div className={styles.videoActionBtn}>
+        <div
+          className={styles.videoActionBtn}
+          onClick={() => addToLikeHandler(video)}
+        >
           <ThumbUpTwoToneIcon fontSize="large" />
           <small>Like</small>
         </div>
