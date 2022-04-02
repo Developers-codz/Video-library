@@ -9,7 +9,7 @@ import { likedReducer } from "reducer/liked-reducer";
 
 import { useAuth } from "./auth-context";
 import axios from "axios";
-import { ADD_LIKED_API } from "utils/apis";
+import { POST_LIKED_API } from "utils/apis";
 import { useToast } from "./toast-context";
 
 const LikeContext = createContext();
@@ -27,7 +27,7 @@ const LikeProvider = ({ children }) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        ADD_LIKED_API,
+        POST_LIKED_API,
         {
           video: item,
         },

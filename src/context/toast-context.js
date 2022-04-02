@@ -8,11 +8,16 @@ const ToastProvider = ({ children }) => {
     isOpen: false,
     bg: "",
   });
+  // for modal
+
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
     <ToastContext.Provider
       value={{
         toastVal,
         setToastVal,
+        isModalOpen,
+        setModalOpen,
       }}
     >
       {children}
