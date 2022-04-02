@@ -12,21 +12,14 @@ const PlaylistProvider = ({ children }) => {
     playlistList: [],
   });
   const { setToastVal } = useToast();
-  const addToPlaylistHandler = async ({
-    title,
-    description,
-    thumbnail,
-    created,
-    views,
-    gif,
-  }) => {
+  const addToPlaylistHandler = async (title) => {
     const encodedToken = localStorage.getItem("token");
-    // console.log(item);
+    console.log(title);
     try {
       const response = await axios.post(
         POST_PLAYLIST_API,
         {
-          playlist: { title, description, thumbnail, created, views, gif },
+          playlist: { title },
         },
         {
           headers: {
@@ -36,11 +29,14 @@ const PlaylistProvider = ({ children }) => {
       );
       setToastVal((prevVal) => ({
         ...prevVal,
-        msg: "Added in Playlist",
+        msg: "Playlist Created",
         isOpen: "true",
         bg: "green",
       }));
+
       console.log(response.data.playlists);
+      const { playlists } = response.data;
+      playlistDispatch({ type: "CREATE_PLAYLIST", payload: playlists });
     } catch (err) {
       console.log(err);
     }
