@@ -31,9 +31,10 @@
   width: 25vw;
 }
 .rightPane {
+  width: 50vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
 }
 .playlistCards {
   justify-content: space-between;

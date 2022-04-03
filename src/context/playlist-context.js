@@ -62,7 +62,7 @@ const PlaylistProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const addToPlaylistHandler = async (video, _id) => {
+  const addToPlaylistHandler = async (video, _id, title) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.post(
@@ -76,8 +76,13 @@ const PlaylistProvider = ({ children }) => {
           },
         }
       );
-      console.log(response);
-      console.log(playlistState.playlistList);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Added in ${title} playlist`,
+        isOpen: "true",
+        bg: "green",
+      }));
+
       playlistDispatch({
         type: "ADDED_VIDEO_TO_PLAYLIST",
         payload: response.data.playlist,
@@ -87,7 +92,7 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const deleteFromPlaylistHandler = async (playlistId, videoId) => {
+  const deleteFromPlaylistHandler = async (playlistId, videoId, title) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.delete(
@@ -98,7 +103,12 @@ const PlaylistProvider = ({ children }) => {
           },
         }
       );
-      console.log(response);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Removed from ${title} playlist`,
+        isOpen: "true",
+        bg: "red",
+      }));
       playlistDispatch({
         type: "REMOVE_VIDEO_FROM_PLAYLIST",
         payload: response.data.playlist,

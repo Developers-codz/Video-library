@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useToast } from "context/toast-context";
 import { usePlaylist } from "context/playlist-context";
 import { useVideo } from "context/video-context";
-import { removePlaylistHandler } from "backend/controllers/PlaylistController";
+
 export const Modal = () => {
   const [inputText, setInputText] = useState("");
   const {
@@ -19,7 +19,6 @@ export const Modal = () => {
     addToPlaylistHandler,
     deleteFromPlaylistHandler,
   } = usePlaylist();
-  console.log(playlistList);
 
   const clickHandler = () => {
     const token = localStorage.getItem("token");
@@ -70,8 +69,16 @@ export const Modal = () => {
                   )}
                   onClick={() => {
                     playlist.videos.find(({ _id }) => _id === videoData._id)
-                      ? deleteFromPlaylistHandler(playlist._id, videoData._id)
-                      : addToPlaylistHandler(videoData, playlist._id);
+                      ? deleteFromPlaylistHandler(
+                          playlist._id,
+                          videoData._id,
+                          playlist.title
+                        )
+                      : addToPlaylistHandler(
+                          videoData,
+                          playlist._id,
+                          playlist.title
+                        );
                   }}
                 />
                 <label htmlFor={playlist.title}>{playlist.title}</label>

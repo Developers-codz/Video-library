@@ -1,11 +1,12 @@
 import { Toast } from "components";
 import { PlaylistIcon } from "Assets/icons";
 import styles from "./playlist.module.css";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
 import { usePlaylist } from "context/playlist-context";
 import { Playlistcard } from "components";
 export const Playlist = () => {
   const param = useParams();
+  const navigate = useNavigate();
   const playlistAction = param.playlistAction;
   const {
     playlistState: { playlistList },
@@ -41,11 +42,10 @@ export const Playlist = () => {
                   </Link>
                   <i
                     className="fa fa-trash"
-                    onClick={
-                      playlistList.length === 1
-                        ? () => deletePlaylistHandler(_id)
-                        : () => deletePlaylistHandler(_id)
-                    }
+                    onClick={() => {
+                      deletePlaylistHandler(_id);
+                      navigate("/playlist");
+                    }}
                   ></i>
                   <div className={styles.showPlaylistnum}>
                     <h1>+{videos.length}</h1>
@@ -54,15 +54,16 @@ export const Playlist = () => {
               );
             })}
           </div>
-          <div className={styles.rigthPane}>
+          <div className={styles.rightPane}>
             {playlistAction === undefined ? (
-              <>Select a playlist to see playlist videos</>
+              <h2>Click on a particular playlist to see videos</h2>
             ) : (
               currentPlaylist.videos.map((video) => {
                 return (
                   <Playlistcard
                     item={video}
                     currentPlaylistId={currentPlaylist._id}
+                    title={currentPlaylist.title}
                   />
                 );
               })
