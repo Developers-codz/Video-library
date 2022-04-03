@@ -2,16 +2,27 @@ import styles from "./modal.module.css";
 import { useState } from "react";
 import { useToast } from "context/toast-context";
 import { usePlaylist } from "context/playlist-context";
+import { useVideo } from "context/video-context";
+import { removePlaylistHandler } from "backend/controllers/PlaylistController";
 export const Modal = () => {
   const [inputText, setInputText] = useState("");
-  const { isModalOpen, setModalOpen, setToastVal } = useToast();
+  const {
+    isModalOpen: { modalState, videoData },
+    setModalOpen,
+    setToastVal,
+  } = useToast();
+  const { videos } = useVideo();
 
   const {
-    addToPlaylistHandler,
+    addPlaylistHandler,
     playlistState: { playlistList },
+    addToPlaylistHandler,
+    deleteFromPlaylistHandler,
   } = usePlaylist();
+  console.log(playlistList);
 
   const clickHandler = () => {
+    const token = localStorage.getItem("token");
     if (inputText === "") {
       setToastVal((prevVal) => ({
         ...prevVal,
@@ -19,28 +30,50 @@ export const Modal = () => {
         bg: "red",
         isOpen: true,
       }));
+    } else if (token === "") {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "please login first to create playlist",
+        bg: "red",
+        isOpen: true,
+      }));
+    } else {
+      addPlaylistHandler(inputText);
+      setInputText("");
     }
-    addToPlaylistHandler(inputText);
-    setInputText("");
   };
+
   return (
     <>
       <div
         className={styles.modalWrapper}
-        style={isModalOpen ? { display: "block" } : { display: "none" }}
+        style={modalState ? { display: "block" } : { display: "none" }}
       >
         <div className={styles.modalHead}>
           <h3>Save to:</h3>
           <i
             class="fa fa-times reset"
-            onClick={() => setModalOpen((open) => !open)}
+            onClick={() =>
+              setModalOpen((modal) => ({ ...modal, modalState: false }))
+            }
           ></i>
         </div>
         {playlistList.length > 0 &&
           playlistList.map((playlist) => {
             return (
-              <div className={styles.selectInputWrapper}>
-                <input type="checkbox" id={playlist.title} />
+              <div className={styles.selectInputWrapper} key={playlist._id}>
+                <input
+                  type="checkbox"
+                  id={playlist.title}
+                  checked={playlist.videos.find(
+                    ({ _id }) => _id === videoData._id
+                  )}
+                  onClick={() => {
+                    playlist.videos.find(({ _id }) => _id === videoData._id)
+                      ? deleteFromPlaylistHandler(playlist._id, videoData._id)
+                      : addToPlaylistHandler(videoData, playlist._id);
+                  }}
+                />
                 <label htmlFor={playlist.title}>{playlist.title}</label>
               </div>
             );

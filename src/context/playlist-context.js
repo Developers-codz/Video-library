@@ -12,9 +12,9 @@ const PlaylistProvider = ({ children }) => {
     playlistList: [],
   });
   const { setToastVal } = useToast();
-  const addToPlaylistHandler = async (title) => {
+
+  const addPlaylistHandler = async (title) => {
     const encodedToken = localStorage.getItem("token");
-    console.log(title);
     try {
       const response = await axios.post(
         POST_PLAYLIST_API,
@@ -34,15 +34,89 @@ const PlaylistProvider = ({ children }) => {
         bg: "green",
       }));
 
-      console.log(response.data.playlists);
       const { playlists } = response.data;
       playlistDispatch({ type: "CREATE_PLAYLIST", payload: playlists });
     } catch (err) {
       console.log(err);
     }
   };
+
+  const deletePlaylistHandler = async (_id) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.delete(`/api/user/playlists/${_id}`, {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      const { playlists } = response.data;
+      playlistDispatch({ type: "DELETE_PLAYLIST", payload: playlists });
+      console.log(response);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "Playlist Deleted",
+        isOpen: "true",
+        bg: "red",
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addToPlaylistHandler = async (video, _id) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.post(
+        `/api/user/playlists/${_id}`,
+        {
+          video,
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      console.log(response);
+      console.log(playlistState.playlistList);
+      playlistDispatch({
+        type: "ADDED_VIDEO_TO_PLAYLIST",
+        payload: response.data.playlist,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteFromPlaylistHandler = async (playlistId, videoId) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${playlistId}/${videoId}`,
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      console.log(response);
+      playlistDispatch({
+        type: "REMOVE_VIDEO_FROM_PLAYLIST",
+        payload: response.data.playlist,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
-    <PlaylistContext.Provider value={{ playlistState, addToPlaylistHandler }}>
+    <PlaylistContext.Provider
+      value={{
+        playlistState,
+        addPlaylistHandler,
+        deletePlaylistHandler,
+        addToPlaylistHandler,
+        deleteFromPlaylistHandler,
+      }}
+    >
       {children}
     </PlaylistContext.Provider>
   );

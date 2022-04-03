@@ -10,7 +10,10 @@ const ToastProvider = ({ children }) => {
   });
   // for modal
 
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState({
+    modalState: false,
+    videoData: null,
+  });
   return (
     <ToastContext.Provider
       value={{

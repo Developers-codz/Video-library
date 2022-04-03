@@ -15,14 +15,16 @@ import {
 import { useToast } from "context/toast-context";
 
 function App() {
-  const { isModalOpen } = useToast();
+  const {
+    isModalOpen: { modalState },
+  } = useToast();
   return (
     <>
       <Modal />
       <div
         className="App"
         style={
-          isModalOpen
+          modalState
             ? { pointerEvents: "none", opacity: ".3" }
             : { pointerEvents: "auto", opacity: "1" }
         }
@@ -37,7 +39,9 @@ function App() {
           </Route>
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/playlist" element={<Playlist />} />
+            <Route path="/playlist" element={<Playlist />}>
+              <Route path=":playlistAction" element={<Playlist />} />
+            </Route>
             <Route path="/history" element={<History />} />
             <Route path="/liked" element={<Liked />} />
             <Route path="/profile" element={<Profile />}>

@@ -12,7 +12,6 @@ import { Toast } from "components";
 export const Video = () => {
   const { videos } = useVideo();
   const { addToLikeHandler } = useLike();
-  const { addToPlaylistHandler } = usePlaylist();
   let params = useParams();
   const getVideo = (id) => videos.find(({ _id }) => _id === id);
   let video = getVideo(params.videoId, 10);
@@ -51,7 +50,13 @@ export const Video = () => {
         </div>
         <div
           className={styles.videoActionBtn}
-          onClick={() => setModalOpen((open) => !open)}
+          onClick={() =>
+            setModalOpen((modal) => ({
+              ...modal,
+              modalState: true,
+              videoData: video,
+            }))
+          }
         >
           <FeaturedPlayListTwoToneIcon fontSize="large" />
           <small>Playlist</small>
