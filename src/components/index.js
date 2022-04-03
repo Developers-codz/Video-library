@@ -5,3 +5,5 @@ export { Toast } from "./toast/Toast";
 export { ProtectedRoute } from "./ProtectedRoute";
 export { PublicRoute } from "./PublicRoute";
 export { LikedCard } from "./likedcard/LikedCard";
+export { Playlistcard } from "./playlistcard/Playlistcard";
+export { Modal } from "./modal/Modal";

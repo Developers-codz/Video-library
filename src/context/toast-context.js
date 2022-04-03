@@ -8,11 +8,19 @@ const ToastProvider = ({ children }) => {
     isOpen: false,
     bg: "",
   });
+  // for modal
+
+  const [isModalOpen, setModalOpen] = useState({
+    modalState: false,
+    videoData: null,
+  });
   return (
     <ToastContext.Provider
       value={{
         toastVal,
         setToastVal,
+        isModalOpen,
+        setModalOpen,
       }}
     >
       {children}

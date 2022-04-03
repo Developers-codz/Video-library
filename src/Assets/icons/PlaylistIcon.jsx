@@ -1,11 +1,12 @@
-export const Playlist = () => {
+export const PlaylistIcon = ({ width, height, color }) => {
   return (
     <svg
       aria-hidden="true"
       role="img"
       class="iconify iconify--mdi"
-      width="32"
-      height="32"
+      width={width}
+      height={height}
+      color={color}
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 24 24"
     >

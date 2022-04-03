@@ -1,0 +1,48 @@
+.modalWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 20rem;
+  max-height: 17rem;
+  z-index: 3;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  border-radius: 20px;
+  color: white;
+}
+.modalHead {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.btnWrappper {
+  position: fixed;
+  bottom: 0;
+  left: 2.5rem;
+}
+.createPlaylistBtn {
+  background-color: var(--COLOR-PRIMARY);
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 0.4rem 4rem;
+  border-radius: 10px;
+  margin: 0.8rem 0;
+}
+.inputWrapper {
+  height: 6rem;
+  padding: 1rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.inputWrapper > label,
+.selectInputWrapper > input {
+  margin-right: 1rem;
+}
+.inputWrapper > input {
+  padding: 0.4rem 1rem;
+}
+.selectInputWrapper {
+  text-align: center;
+  font-size: large;
+}

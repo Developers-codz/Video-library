@@ -42,6 +42,7 @@ body {
 }
 .active {
   color: var(--COLOR-PRIMARY);
+  border-bottom: 2px solid var(--COLOR-BACKGROUND-LIGHTER);
 }
 
 .main {

@@ -1,0 +1,65 @@
+.emptyLikeContainer {
+  text-align: center;
+}
+.emptyLikeContainer > * {
+  padding: 1rem 0;
+}
+.exploreBtn {
+  display: inline-block;
+  margin: 2rem 0 0 0;
+  padding: 0.8rem 3rem;
+  border: 2px solid var(--COLOR-PRIMARY);
+  background-color: var(--COLOR-BACKGROUND);
+  color: var(--COLOR-PRIMARY);
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.exploreBtn:hover {
+  transform: scale(1.02, 1.02);
+}
+.links {
+  color: white;
+  text-decoration: none;
+}
+.playlistContainer {
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftPane {
+  width: 25vw;
+}
+.rightPane {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.playlistCards {
+  justify-content: space-between;
+  position: relative;
+  background-color: var(--COLOR-PRIMARY);
+  height: 5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 20px;
+}
+.playlistCards,
+.showPlaylistnum {
+  display: flex;
+  align-items: center;
+}
+.showPlaylistnum {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--COLOR-BACKGROUND);
+  opacity: 0.5;
+  width: 50%;
+  height: inherit;
+}
+.playlistCards > i {
+  z-index: 3;
+  cursor: pointer;
+}

@@ -5,6 +5,9 @@ import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import BookmarkAddTwoToneIcon from "@mui/icons-material/BookmarkAddTwoTone";
 import FeaturedPlayListTwoToneIcon from "@mui/icons-material/FeaturedPlayListTwoTone";
 import { useLike } from "context/like-context";
+import { usePlaylist } from "context/playlist-context";
+import { useToast } from "context/toast-context";
+
 import { Toast } from "components";
 export const Video = () => {
   const { videos } = useVideo();
@@ -13,15 +16,9 @@ export const Video = () => {
   const getVideo = (id) => videos.find(({ _id }) => _id === id);
   let video = getVideo(params.videoId, 10);
 
-  const {
-    title,
-    views,
-    creator,
-    videoLink,
-    description,
-    categoryName,
-    created,
-  } = video;
+  const { setModalOpen } = useToast();
+
+  const { title, views, creator, videoLink, created } = video;
 
   return (
     <div className={styles.videoContainer}>
@@ -51,7 +48,16 @@ export const Video = () => {
           <BookmarkAddTwoToneIcon fontSize="large" />
           <small>Save</small>
         </div>
-        <div className={styles.videoActionBtn}>
+        <div
+          className={styles.videoActionBtn}
+          onClick={() =>
+            setModalOpen((modal) => ({
+              ...modal,
+              modalState: true,
+              videoData: video,
+            }))
+          }
+        >
           <FeaturedPlayListTwoToneIcon fontSize="large" />
           <small>Playlist</small>
         </div>
