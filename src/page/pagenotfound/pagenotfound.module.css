@@ -1,0 +1,18 @@
+.notFoundContainer {
+  text-align: center;
+  width: 75vw;
+  margin-top: 4rem;
+}
+.notFoundContainer > p {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+.toHomeBtn {
+  font-size: 2rem;
+  color: var(--COLOR-PRIMARY);
+}
+@media only screen and (max-width: 768px) {
+  .notFoundContainer {
+    width: 100vw;
+  }
+}

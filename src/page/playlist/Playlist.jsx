@@ -1,4 +1,3 @@
-import { Toast } from "components";
 import { PlaylistIcon } from "Assets/icons";
 import styles from "./playlist.module.css";
 import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
@@ -18,10 +17,9 @@ export const Playlist = () => {
   console.log(currentPlaylist);
   return (
     <>
-      <Toast />
       {playlistList.length === 0 ? (
-        <div className={styles.emptyLikeContainer}>
-          <PlaylistIcon width="100" height="100" color="#ff8a8a" />
+        <div className={styles.emptyPlaylistContainer}>
+          <PlaylistIcon width="120" height="120" color="#ff8a8a" />
           <h1>Your Playlist is Empty ☹️</h1>
           <Link className={styles.exploreBtn} to="/">
             Explore now

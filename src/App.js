@@ -1,7 +1,14 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
-import { Navbar, Aside, ProtectedRoute, PublicRoute, Modal } from "components";
+import {
+  Navbar,
+  Aside,
+  ProtectedRoute,
+  PublicRoute,
+  Modal,
+  Toast,
+} from "components";
 import {
   Home,
   Liked,
@@ -11,6 +18,7 @@ import {
   Login,
   Signup,
   Profile,
+  Pagenotfound,
 } from "page";
 import { useToast } from "context/toast-context";
 
@@ -20,6 +28,7 @@ function App() {
   } = useToast();
   return (
     <>
+      <Toast />
       <Modal />
       <div
         className="App"
@@ -33,8 +42,8 @@ function App() {
         <Aside />
 
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="/" index element={<Home />} />
+          <Route path="/" index element={<Home />} />
+          <Route path="/video" element={<Home />}>
             <Route path=":videoId" element={<Video />} />
           </Route>
 
@@ -53,6 +62,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Route>
+          <Route path="/*" element={<Pagenotfound />} />
         </Routes>
       </div>
     </>

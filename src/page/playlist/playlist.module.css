@@ -1,7 +1,8 @@
-.emptyLikeContainer {
+.emptyPlaylistContainer {
   text-align: center;
+  width: 75vw;
 }
-.emptyLikeContainer > * {
+.emptyPlaylistContainer > * {
   padding: 1rem 0;
 }
 .exploreBtn {

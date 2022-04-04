@@ -2,7 +2,7 @@ import styles from "./form.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "context/auth-context";
-import { Toast } from "components";
+
 export const Login = () => {
   const formObj = {
     email: "",
@@ -21,7 +21,6 @@ export const Login = () => {
 
   return (
     <div className={styles.formWrapper}>
-      <Toast />
       <h2 className="mb-lg">Login Now:</h2>
       <form className={styles.formContainer}>
         <input

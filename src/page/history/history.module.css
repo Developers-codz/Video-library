@@ -1,0 +1,53 @@
+.emptyHistoryContainer {
+  width: 75vw;
+  text-align: center;
+}
+.emptyHistoryContainer > * {
+  padding: 1rem 0;
+}
+.exploreBtn {
+  display: inline-block;
+  margin: 2rem 0rem 0rem 0rem;
+  padding: 0.8rem 3rem;
+  border: 2px solid var(--COLOR-PRIMARY);
+  background-color: var(--COLOR-BACKGROUND);
+  color: var(--COLOR-PRIMARY);
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.exploreBtn:hover {
+  transform: scale(1.02, 1.02);
+}
+.historyContainer {
+  position: relative;
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.clearAllBtn {
+  border: none;
+  padding: 0.6rem 1rem;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.clearAllBtn:hover {
+  color: var(--COLOR-PRIMARY);
+  transform: scale(1.02, 1.03);
+}
+.card {
+  width: 20rem;
+  height: 270px;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  margin: 4rem 1rem 1rem 1rem;
+}
+.card > img {
+  width: inherit;
+}

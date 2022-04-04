@@ -75,6 +75,7 @@
 }
 .emptyLikeContainer {
   text-align: center;
+  width: 75vw;
 }
 .emptyLikeContainer > * {
   padding: 1rem 0;

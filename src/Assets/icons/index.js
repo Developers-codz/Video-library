@@ -2,5 +2,6 @@ export { UserIcon } from "./UserIcon";
 export { Home } from "./Home";
 export { PlaylistIcon } from "./PlaylistIcon";
 export { LikedIcon } from "./LikedIcon";
-export { History } from "./History";
+export { HistoryIcon } from "./HistoryIcon";
 export { Verticaldots } from "./Verticaldots";
+export { NotfoundIcon } from "./NotfoundIcon";

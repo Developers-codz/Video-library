@@ -8,6 +8,7 @@ import { AuthProvider } from "context/auth-context";
 import { ToastProvider } from "context/toast-context";
 import { LikeProvider } from "context/like-context";
 import { PlaylistProvider } from "context/playlist-context";
+import { HistoryProvider } from "context/history-context";
 import App from "App";
 import { makeServer } from "server";
 
@@ -19,15 +20,17 @@ ReactDOM.render(
     <Router>
       <ToastProvider>
         <AuthProvider>
-          <PlaylistProvider>
-            <LikeProvider>
-              <VideoProvider>
-                <AsideProvider>
-                  <App />
-                </AsideProvider>
-              </VideoProvider>
-            </LikeProvider>
-          </PlaylistProvider>
+          <HistoryProvider>
+            <PlaylistProvider>
+              <LikeProvider>
+                <VideoProvider>
+                  <AsideProvider>
+                    <App />
+                  </AsideProvider>
+                </VideoProvider>
+              </LikeProvider>
+            </PlaylistProvider>
+          </HistoryProvider>
         </AuthProvider>
       </ToastProvider>
     </Router>

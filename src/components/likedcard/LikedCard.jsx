@@ -3,7 +3,6 @@ import styles from "../../page/liked/liked.module.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLike } from "context/like-context";
-import { ThumbsUpDownTwoTone } from "@mui/icons-material";
 
 export const LikedCard = ({ item }) => {
   const [showMenu, setShowMenu] = useState(false);

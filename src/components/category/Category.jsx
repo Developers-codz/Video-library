@@ -24,7 +24,7 @@ export const Category = () => {
         }
       />
       <label htmlFor="craftIdeas" className={styles.category}>
-        Craft Ideas
+        Crafts
       </label>
       <input
         className={styles.hiddenInput}

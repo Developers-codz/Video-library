@@ -3,7 +3,6 @@ import { LikedCard } from "components";
 import { useLike } from "context/like-context";
 import { LikedIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
-import { Toast } from "components";
 
 export const Liked = () => {
   const {
@@ -14,10 +13,9 @@ export const Liked = () => {
     <>
       {likedList.length === 0 ? (
         <>
-          <Toast />
           <div className={styles.emptyLikeContainer}>
-            <LikedIcon width="100" height="100" color="#ff8a8a" />
-            <h1>No liked videos yet</h1>
+            <LikedIcon width="120" height="120" color="#ff8a8a" />
+            <h1>No liked videos yet ??</h1>
             <Link className={styles.exploreBtn} to="/">
               Explore now
             </Link>
@@ -26,7 +24,6 @@ export const Liked = () => {
       ) : (
         <>
           <div className={styles.cardContainer}>
-            <Toast />
             {likedList.map((item) => {
               return <LikedCard item={item} />;
             })}

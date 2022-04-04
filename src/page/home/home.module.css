@@ -1,5 +1,4 @@
 .cardContainer {
-  width: 75vw;
   margin-left: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -41,9 +40,6 @@
 }
 @media only screen and (max-width: 768px) {
   .cardContainer {
-    width: 100%;
-  }
-  .videoCard {
-    padding: 1rem auto;
+    width: 100vw;
   }
 }
