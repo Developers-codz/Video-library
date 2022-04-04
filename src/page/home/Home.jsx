@@ -1,6 +1,7 @@
 import styles from "./home.module.css";
 
 import { useVideo } from "context/video-context";
+import { useHistory } from "context/history-context";
 import { Category, Toast } from "components";
 import { getCategorisedVideos } from "functions";
 import { NavLink, Outlet, useParams } from "react-router-dom";
@@ -12,6 +13,7 @@ export const Home = () => {
     videoState: { categoryBy },
     videos,
   } = useVideo();
+  const { addToHistoryHandler } = useHistory();
 
   const categoryFilteredVideos = getCategorisedVideos(videos, categoryBy);
 
@@ -26,6 +28,7 @@ export const Home = () => {
               to={`/${video._id}`}
               key={video._id}
               className="decor-none light-text"
+              onClick={() => addToHistoryHandler(video)}
             >
               <div className={styles.videoCard}>
                 <img src={video.gif} className={styles.image} />

@@ -1,4 +1,5 @@
 .emptyHistoryContainer {
+  width: 75vw;
   text-align: center;
 }
 .emptyHistoryContainer > * {
@@ -17,4 +18,36 @@
 }
 .exploreBtn:hover {
   transform: scale(1.02, 1.02);
+}
+.historyContainer {
+  position: relative;
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.clearAllBtn {
+  border: none;
+  padding: 0.6rem 1rem;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.clearAllBtn:hover {
+  color: var(--COLOR-PRIMARY);
+  transform: scale(1.02, 1.03);
+}
+.card {
+  width: 20rem;
+  height: 300px;
+  background-color: var(--COLOR-BACKGROUND-LIGHTER);
+  margin: 4rem 1rem 1rem 1rem;
+}
+.card > img {
+  width: inherit;
 }
