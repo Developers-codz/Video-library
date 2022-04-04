@@ -18,6 +18,7 @@ import {
   Login,
   Signup,
   Profile,
+  Pagenotfound,
 } from "page";
 import { useToast } from "context/toast-context";
 
@@ -41,8 +42,8 @@ function App() {
         <Aside />
 
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="/" index element={<Home />} />
+          <Route path="/" index element={<Home />} />
+          <Route path="/video" element={<Home />}>
             <Route path=":videoId" element={<Video />} />
           </Route>
 
@@ -61,6 +62,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Route>
+          <Route path="/*" element={<Pagenotfound />} />
         </Routes>
       </div>
     </>

@@ -24,7 +24,7 @@ export const Home = () => {
         {categoryFilteredVideos.map((video) => {
           return (
             <NavLink
-              to={`/${video._id}`}
+              to={`/video/${video._id}`}
               key={video._id}
               className="decor-none light-text"
               onClick={() => addToHistoryHandler(video)}
