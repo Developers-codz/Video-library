@@ -2,7 +2,7 @@ import styles from "./home.module.css";
 
 import { useVideo } from "context/video-context";
 import { useHistory } from "context/history-context";
-import { Category, Toast } from "components";
+import { Category } from "components";
 import { getCategorisedVideos } from "functions";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 
@@ -19,7 +19,6 @@ export const Home = () => {
 
   return id === undefined ? (
     <div>
-      <Toast />
       <Category />
       <div className={styles.cardContainer}>
         {categoryFilteredVideos.map((video) => {

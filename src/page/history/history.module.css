@@ -44,7 +44,7 @@
 }
 .card {
   width: 20rem;
-  min-height: 270px;
+  height: 270px;
   background-color: var(--COLOR-BACKGROUND-LIGHTER);
   margin: 4rem 1rem 1rem 1rem;
 }

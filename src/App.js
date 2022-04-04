@@ -1,7 +1,14 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
-import { Navbar, Aside, ProtectedRoute, PublicRoute, Modal } from "components";
+import {
+  Navbar,
+  Aside,
+  ProtectedRoute,
+  PublicRoute,
+  Modal,
+  Toast,
+} from "components";
 import {
   Home,
   Liked,
@@ -20,6 +27,7 @@ function App() {
   } = useToast();
   return (
     <>
+      <Toast />
       <Modal />
       <div
         className="App"

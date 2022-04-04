@@ -2,7 +2,6 @@ import styles from "./form.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "context/auth-context";
-import { Toast } from "components";
 import { useToast } from "context/toast-context";
 export const Signup = () => {
   const formObj = {
@@ -21,25 +20,12 @@ export const Signup = () => {
     if (formData.password === confirmPassword) {
       signupHandler(formData, setFormData, formObj);
     }
-    //  else {
-    //   setToastVal((prevVal) => ({
-    //     ...prevVal,
-    //     bg: "red",
-    //     isOpen: true,
-    //     msg: "Password do not match",
-    //   }));
-    //   setTimeout(
-    //     setToastVal((prevVal) => ({ ...prevVal, isOpen: false })),
-    //     1500
-    //   );
-    //}
   };
 
   const changeHandler = (e) =>
     setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
   return (
     <div className={styles.formWrapper}>
-      <Toast />
       <h2 className="mb-lg">Signup Now:</h2>
       <form className={styles.formContainer}>
         <input
