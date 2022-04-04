@@ -16,8 +16,8 @@ export const Liked = () => {
         <>
           <Toast />
           <div className={styles.emptyLikeContainer}>
-            <LikedIcon width="100" height="100" color="#ff8a8a" />
-            <h1>No liked videos yet</h1>
+            <LikedIcon width="120" height="120" color="#ff8a8a" />
+            <h1>No liked videos yet ??</h1>
             <Link className={styles.exploreBtn} to="/">
               Explore now
             </Link>

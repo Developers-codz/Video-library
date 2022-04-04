@@ -1,0 +1,20 @@
+.emptyHistoryContainer {
+  text-align: center;
+}
+.emptyHistoryContainer > * {
+  padding: 1rem 0;
+}
+.exploreBtn {
+  display: inline-block;
+  margin: 2rem 0rem 0rem 0rem;
+  padding: 0.8rem 3rem;
+  border: 2px solid var(--COLOR-PRIMARY);
+  background-color: var(--COLOR-BACKGROUND);
+  color: var(--COLOR-PRIMARY);
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.exploreBtn:hover {
+  transform: scale(1.02, 1.02);
+}

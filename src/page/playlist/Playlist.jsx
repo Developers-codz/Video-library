@@ -20,8 +20,8 @@ export const Playlist = () => {
     <>
       <Toast />
       {playlistList.length === 0 ? (
-        <div className={styles.emptyLikeContainer}>
-          <PlaylistIcon width="100" height="100" color="#ff8a8a" />
+        <div className={styles.emptyPlaylistContainer}>
+          <PlaylistIcon width="120" height="120" color="#ff8a8a" />
           <h1>Your Playlist is Empty ☹️</h1>
           <Link className={styles.exploreBtn} to="/">
             Explore now
