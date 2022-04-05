@@ -51,7 +51,7 @@ export const Modal = () => {
         <div className={styles.modalHead}>
           <h3>Save to:</h3>
           <i
-            class="fa fa-times reset"
+            className="fa fa-times reset"
             onClick={() =>
               setModalOpen((modal) => ({ ...modal, modalState: false }))
             }

@@ -8,7 +8,7 @@
   width: 17rem;
   height: 15rem;
   border: 1px solid var(--COLOR-BACKGROUND-LIGHTER);
-  margin: 0.5rem 1rem;
+  margin: 4rem 1rem 0.5rem 1rem;
   cursor: pointer;
   position: relative;
 }

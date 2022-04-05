@@ -1,10 +1,12 @@
 import styles from "./liked.module.css";
-import { LikedCard } from "components";
+import { SingleCard } from "components";
 import { useLike } from "context/like-context";
 import { LikedIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "functions";
 
 export const Liked = () => {
+  useDocumentTitle("Liked");
   const {
     likedState: { likedList },
   } = useLike();
@@ -25,7 +27,7 @@ export const Liked = () => {
         <>
           <div className={styles.cardContainer}>
             {likedList.map((item) => {
-              return <LikedCard item={item} />;
+              return <SingleCard item={item} flag={"liked"} key={item._id} />;
             })}
           </div>
         </>

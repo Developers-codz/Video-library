@@ -1,7 +1,10 @@
 import styles from "./profile.module.css";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "context/auth-context";
+import { useDocumentTitle } from "functions";
+
 export const Profile = () => {
+  useDocumentTitle("Profile");
   const param = useParams();
   let profileAction = param.profileAction;
   const {

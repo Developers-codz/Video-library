@@ -1,17 +1,20 @@
-import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import styles from "../../page/liked/liked.module.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useLike } from "context/like-context";
-
-export const LikedCard = ({ item }) => {
+import { getIcon } from "functions";
+// import { useLike } from "context/like-context";
+// import { useHistory } from "context/history-context";
+// import { useWatchLater } from "context/watchlater-context";
+import { useDeleteFunction } from "functions";
+export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { removeFromLikeHandler } = useLike();
+  const getFunctionName = useDeleteFunction();
   const clickHandler = () => {
     setShowMenu(!showMenu);
   };
+
   return (
-    <div className={styles.videoCard}>
+    <div className={styles.videoCard} key={item._id}>
       <NavLink to={`/${item._id}`} className="decor-none light-text">
         <img src={item.gif} className={styles.image} />
       </NavLink>
@@ -26,15 +29,13 @@ export const LikedCard = ({ item }) => {
           </span>
         </div>
         <div className={styles.iconWrapper} onClick={clickHandler}>
-          <div>
-            <ThumbUpTwoToneIcon />
-          </div>
+          <div>{getIcon(flag)}</div>
         </div>
       </div>
       {showMenu && (
         <div className={styles.toggleMenu}>
-          <button onClick={() => removeFromLikeHandler(item._id)}>
-            Remove from liked
+          <button onClick={() => getFunctionName(flag, item._id)}>
+            Remove from {flag}
           </button>
         </div>
       )}

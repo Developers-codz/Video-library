@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "context/auth-context";
 import { useToast } from "context/toast-context";
+import { useDocumentTitle } from "functions";
 export const Signup = () => {
+  useDocumentTitle("signup");
   const formObj = {
     firstName: "",
     lastName: "",

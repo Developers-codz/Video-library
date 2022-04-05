@@ -5,12 +5,15 @@ import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import BookmarkAddTwoToneIcon from "@mui/icons-material/BookmarkAddTwoTone";
 import FeaturedPlayListTwoToneIcon from "@mui/icons-material/FeaturedPlayListTwoTone";
 import { useLike } from "context/like-context";
-import { usePlaylist } from "context/playlist-context";
 import { useToast } from "context/toast-context";
+import { useWatchLater } from "context/watchlater-context";
+import { useDocumentTitle } from "functions";
 
 export const Video = () => {
+  useDocumentTitle("Video");
   const { videos } = useVideo();
   const { addToLikeHandler } = useLike();
+  const { addWatchcLaterHandler } = useWatchLater();
   let params = useParams();
   const getVideo = (id) => videos.find(({ _id }) => _id === id);
   let video = getVideo(params.videoId, 10);
@@ -42,7 +45,10 @@ export const Video = () => {
           <ThumbUpTwoToneIcon fontSize="large" />
           <small>Like</small>
         </div>
-        <div className={styles.videoActionBtn}>
+        <div
+          className={styles.videoActionBtn}
+          onClick={() => addWatchcLaterHandler(video)}
+        >
           <BookmarkAddTwoToneIcon fontSize="large" />
           <small>Save</small>
         </div>

@@ -2,8 +2,11 @@ import styles from "./history.module.css";
 import { HistoryIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useHistory } from "context/history-context";
-import { HistoryCard } from "components";
+import { SingleCard } from "components";
+import { useDocumentTitle } from "functions";
+
 export const History = () => {
+  useDocumentTitle("History");
   const {
     historyState: { historyList },
     clearHistoryHandler,
@@ -29,7 +32,7 @@ export const History = () => {
           </button>
           <div class={styles.historyCardWrapper}></div>
           {historyList.map((history) => (
-            <HistoryCard video={history} />
+            <SingleCard item={history} flag={"history"} key={history._id} />
           ))}
         </div>
       )}
