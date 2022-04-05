@@ -6,6 +6,7 @@ export const userInitialState = {
   isAuthTokenPresent: false,
   authToken: "",
   msg: "",
+  watchlater: [],
 };
 
 export const authReducer = (state, action) => {

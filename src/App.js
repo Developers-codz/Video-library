@@ -19,6 +19,7 @@ import {
   Signup,
   Profile,
   Pagenotfound,
+  WatchLater,
 } from "page";
 import { useToast } from "context/toast-context";
 
@@ -53,6 +54,7 @@ function App() {
             </Route>
             <Route path="/history" element={<History />} />
             <Route path="/liked" element={<Liked />} />
+            <Route path="watchlater" element={<WatchLater />} />
             <Route path="/profile" element={<Profile />}>
               <Route path=":profileAction" element={<Profile />} />
             </Route>

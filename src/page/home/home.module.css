@@ -14,6 +14,7 @@
   width: inherit;
   height: 70%;
 }
+
 .image:hover {
   opacity: 0.6;
 }
