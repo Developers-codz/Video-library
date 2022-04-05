@@ -8,3 +8,4 @@ export { LikedCard } from "./likedcard/LikedCard";
 export { Playlistcard } from "./playlistcard/Playlistcard";
 export { Modal } from "./modal/Modal";
 export { HistoryCard } from "./historycard/HistoryCard";
+export { WatchlaterCard } from "./watchlatercard/WatchlaterCard";
