@@ -2,8 +2,10 @@ import styles from "./form.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "context/auth-context";
+import { useDocumentTitle } from "functions";
 
 export const Login = () => {
+  useDocumentTitle("Login");
   const formObj = {
     email: "",
     password: "",

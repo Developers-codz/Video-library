@@ -3,8 +3,10 @@ import { SingleCard } from "components";
 import { useLike } from "context/like-context";
 import { LikedIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "functions";
 
 export const Liked = () => {
+  useDocumentTitle("Liked");
   const {
     likedState: { likedList },
   } = useLike();

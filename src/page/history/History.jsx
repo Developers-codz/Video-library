@@ -3,7 +3,10 @@ import { HistoryIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useHistory } from "context/history-context";
 import { SingleCard } from "components";
+import { useDocumentTitle } from "functions";
+
 export const History = () => {
+  useDocumentTitle("History");
   const {
     historyState: { historyList },
     clearHistoryHandler,

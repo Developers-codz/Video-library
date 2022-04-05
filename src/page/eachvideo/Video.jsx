@@ -5,11 +5,12 @@ import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import BookmarkAddTwoToneIcon from "@mui/icons-material/BookmarkAddTwoTone";
 import FeaturedPlayListTwoToneIcon from "@mui/icons-material/FeaturedPlayListTwoTone";
 import { useLike } from "context/like-context";
-import { usePlaylist } from "context/playlist-context";
 import { useToast } from "context/toast-context";
 import { useWatchLater } from "context/watchlater-context";
+import { useDocumentTitle } from "functions";
 
 export const Video = () => {
+  useDocumentTitle("Video");
   const { videos } = useVideo();
   const { addToLikeHandler } = useLike();
   const { addWatchcLaterHandler } = useWatchLater();

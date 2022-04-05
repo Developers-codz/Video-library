@@ -1,12 +1,13 @@
 import styles from "./home.module.css";
-
 import { useVideo } from "context/video-context";
 import { useHistory } from "context/history-context";
 import { Category } from "components";
 import { getCategorisedVideos } from "functions";
 import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useDocumentTitle } from "functions";
 
 export const Home = () => {
+  useDocumentTitle("Home");
   const param = useParams();
   let id = param.videoId;
   const {

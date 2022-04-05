@@ -1,9 +1,11 @@
 import { PlaylistIcon } from "Assets/icons";
 import styles from "./playlist.module.css";
-import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { usePlaylist } from "context/playlist-context";
 import { Playlistcard } from "components";
+import { useDocumentTitle } from "functions";
 export const Playlist = () => {
+  useDocumentTitle("Playlist");
   const param = useParams();
   const navigate = useNavigate();
   const playlistAction = param.playlistAction;
