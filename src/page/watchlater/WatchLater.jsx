@@ -6,11 +6,11 @@ import { SingleCard } from "components";
 import { useDocumentTitle } from "functions";
 
 export const WatchLater = () => {
-    useDocumentTitle("Watch Later")
+  useDocumentTitle("Watch Later");
   const {
     watchlaterState: { watchlaterList },
   } = useWatchLater();
-  console.log("abc" + watchlaterList[1]);
+
   return (
     <>
       {watchlaterList.length === 0 ? (
@@ -26,7 +26,9 @@ export const WatchLater = () => {
           {" "}
           <div className={styles.cardContainer}>
             {watchlaterList.map((item) => {
-              return <SingleCard item={item} flag={"watchlater"} />;
+              return (
+                <SingleCard item={item} flag={"watchlater"} key={item._id} />
+              );
             })}
           </div>
         </>

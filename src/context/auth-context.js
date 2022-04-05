@@ -40,7 +40,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginHandler = async (e, formData) => {
-    console.log(formData);
     try {
       const response = await axios.post(
         LOGIN_API,
@@ -52,7 +51,7 @@ const AuthProvider = ({ children }) => {
             }
       );
       const { encodedToken, foundUser } = response.data;
-      console.log(foundUser);
+
       localStorage.setItem("token", encodedToken);
       setToastVal((prevVal) => ({
         ...prevVal,

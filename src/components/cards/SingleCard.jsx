@@ -1,29 +1,18 @@
-import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 import styles from "../../page/liked/liked.module.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useLike } from "context/like-context";
-import { useHistory } from "context/history-context";
-import { useWatchLater } from "context/watchlater-context";
-
+import { getIcon } from "functions";
+// import { useLike } from "context/like-context";
+// import { useHistory } from "context/history-context";
+// import { useWatchLater } from "context/watchlater-context";
+import { useDeleteFunction } from "functions";
 export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { removeFromLikeHandler } = useLike();
-  const { removeFromHistoryHandler } = useHistory();
-  const { removeFromWatchLaterHandler } = useWatchLater();
-
+  const getFunctionName = useDeleteFunction();
   const clickHandler = () => {
     setShowMenu(!showMenu);
   };
 
-  const getIcon = () =>
-    flag === "liked" ? <ThumbUpTwoToneIcon /> : <i className="fa fa-trash"></i>;
-
-  const getFunctionName = (_id) => {
-    if (flag === "liked") return removeFromLikeHandler(_id);
-    if (flag === "history") return removeFromHistoryHandler(_id);
-    if (flag === "watchlater") return removeFromWatchLaterHandler(_id);
-  };
   return (
     <div className={styles.videoCard} key={item._id}>
       <NavLink to={`/${item._id}`} className="decor-none light-text">
@@ -40,12 +29,12 @@ export const SingleCard = ({ item, flag }) => {
           </span>
         </div>
         <div className={styles.iconWrapper} onClick={clickHandler}>
-          <div>{getIcon()}</div>
+          <div>{getIcon(flag)}</div>
         </div>
       </div>
       {showMenu && (
         <div className={styles.toggleMenu}>
-          <button onClick={() => getFunctionName(item._id)}>
+          <button onClick={() => getFunctionName(flag, item._id)}>
             Remove from {flag}
           </button>
         </div>

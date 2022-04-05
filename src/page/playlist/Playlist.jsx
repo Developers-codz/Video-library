@@ -16,7 +16,7 @@ export const Playlist = () => {
   const currentPlaylist = playlistList.find(
     ({ _id }) => _id === playlistAction
   );
-  console.log(currentPlaylist);
+
   return (
     <>
       {playlistList.length === 0 ? (
@@ -32,7 +32,7 @@ export const Playlist = () => {
           <div className={styles.leftPane}>
             {playlistList.map(({ title, _id, videos }) => {
               return (
-                <div className={styles.playlistCards}>
+                <div className={styles.playlistCards} key={_id}>
                   <Link
                     to={`/playlist/${_id}`}
                     key={_id}
@@ -64,6 +64,7 @@ export const Playlist = () => {
                     item={video}
                     currentPlaylistId={currentPlaylist._id}
                     title={currentPlaylist.title}
+                    key={video._id}
                   />
                 );
               })

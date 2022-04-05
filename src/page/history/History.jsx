@@ -32,7 +32,7 @@ export const History = () => {
           </button>
           <div class={styles.historyCardWrapper}></div>
           {historyList.map((history) => (
-            <SingleCard item={history} flag={"history"} />
+            <SingleCard item={history} flag={"history"} key={history._id} />
           ))}
         </div>
       )}

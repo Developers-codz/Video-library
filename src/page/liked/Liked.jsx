@@ -27,7 +27,7 @@ export const Liked = () => {
         <>
           <div className={styles.cardContainer}>
             {likedList.map((item) => {
-              return <SingleCard item={item} flag={"liked"} />;
+              return <SingleCard item={item} flag={"liked"} key={item._id} />;
             })}
           </div>
         </>
