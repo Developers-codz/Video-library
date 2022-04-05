@@ -2,7 +2,7 @@ import styles from "./history.module.css";
 import { HistoryIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useHistory } from "context/history-context";
-import { HistoryCard } from "components";
+import { SingleCard } from "components";
 export const History = () => {
   const {
     historyState: { historyList },
@@ -29,7 +29,7 @@ export const History = () => {
           </button>
           <div class={styles.historyCardWrapper}></div>
           {historyList.map((history) => (
-            <HistoryCard video={history} />
+            <SingleCard item={history} flag={"history"} />
           ))}
         </div>
       )}

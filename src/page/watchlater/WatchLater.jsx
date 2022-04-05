@@ -2,7 +2,7 @@ import styles from "../liked/liked.module.css";
 import { WatchlaterIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useWatchLater } from "context/watchlater-context";
-import { WatchlaterCard } from "components";
+import { SingleCard } from "components";
 export const WatchLater = () => {
   const {
     watchlaterState: { watchlaterList },
@@ -23,7 +23,7 @@ export const WatchLater = () => {
           {" "}
           <div className={styles.cardContainer}>
             {watchlaterList.map((item) => {
-              return <WatchlaterCard item={item} />;
+              return <SingleCard item={item} flag={"watchlater"} />;
             })}
           </div>
         </>
