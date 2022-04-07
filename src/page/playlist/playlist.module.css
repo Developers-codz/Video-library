@@ -64,3 +64,25 @@
   z-index: 3;
   cursor: pointer;
 }
+@media only screen and (max-width: 768px) {
+  .emptyPlaylistContainer,
+  .playlistContainer {
+    width: 100vw;
+  }
+  .playlistContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .rightPane {
+    width: 100vw;
+  }
+  .leftPane{
+    text-align: center;
+    width:50vw;
+  }
+  .playlistCards{
+    margin: 1rem auto;
+
+  }
+}
