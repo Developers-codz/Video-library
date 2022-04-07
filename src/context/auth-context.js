@@ -9,11 +9,13 @@ const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, userInitialState);
   const { setToastVal } = useToast();
+  const [isLoading, setLoading] = useState(false);
 
   //   SignUp Functionality
 
   const signupHandler = async (formData, setFormData, formObj) => {
     try {
+      setLoading(true);
       const response = await axios.post(SIGNUP_API, JSON.stringify(formData));
       const { encodedToken, createdUser } = response.data;
       localStorage.setItem("token", encodedToken);
@@ -37,10 +39,12 @@ const AuthProvider = ({ children }) => {
       }));
     }
     setFormData(formObj);
+    setLoading(false);
   };
 
   const loginHandler = async (e, formData) => {
     try {
+      setLoading(true);
       const response = await axios.post(
         LOGIN_API,
         e.target.value === "login"
@@ -73,8 +77,10 @@ const AuthProvider = ({ children }) => {
         isOpen: true,
       }));
     }
+    setLoading(false);
   };
   const logoutHandler = () => {
+    setLoading(true);
     setToastVal((prevVal) => ({
       ...prevVal,
       msg: "logged out successfully",
@@ -83,21 +89,18 @@ const AuthProvider = ({ children }) => {
     }));
 
     authDispatch({ type: "LOGOUT" });
+    setTimeout(() => setLoading(false), 1000);
   };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        authState,
-        authDispatch,
-        signupHandler,
-        loginHandler,
-        logoutHandler,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = {
+    authState,
+    authDispatch,
+    signupHandler,
+    loginHandler,
+    logoutHandler,
+    isLoading,
+    setLoading,
+  };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 const useAuth = () => useContext(AuthContext);

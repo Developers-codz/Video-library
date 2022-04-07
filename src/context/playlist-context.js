@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, createContext, Children } from "react";
+import { useContext, createContext } from "react";
 import { useReducer } from "react";
 import { playlistReducer } from "reducer";
 import { POST_PLAYLIST_API } from "utils/apis";
@@ -44,7 +44,7 @@ const PlaylistProvider = ({ children }) => {
   const deletePlaylistHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      const response = await axios.delete(`/api/user/playlists/${_id}`, {
+      const response = await axios.delete(`${POST_PLAYLIST_API}/${_id}`, {
         headers: {
           authorization: encodedToken,
         },
@@ -66,7 +66,7 @@ const PlaylistProvider = ({ children }) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        `/api/user/playlists/${_id}`,
+        `${POST_PLAYLIST_API}/${_id}`,
         {
           video,
         },
@@ -82,10 +82,10 @@ const PlaylistProvider = ({ children }) => {
         isOpen: "true",
         bg: "green",
       }));
-
+      const { playlist } = response.data;
       playlistDispatch({
         type: "ADDED_VIDEO_TO_PLAYLIST",
-        payload: response.data.playlist,
+        payload: playlist,
       });
     } catch (err) {
       console.log(err);
@@ -96,7 +96,7 @@ const PlaylistProvider = ({ children }) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.delete(
-        `/api/user/playlists/${playlistId}/${videoId}`,
+        `${POST_PLAYLIST_API}/${playlistId}/${videoId}`,
         {
           headers: {
             authorization: encodedToken,
@@ -109,24 +109,25 @@ const PlaylistProvider = ({ children }) => {
         isOpen: "true",
         bg: "red",
       }));
+      const { playlist } = response.data;
       playlistDispatch({
         type: "REMOVE_VIDEO_FROM_PLAYLIST",
-        payload: response.data.playlist,
+        payload: playlist,
       });
     } catch (err) {
       console.log(err);
     }
   };
+  const value = {
+    playlistState,
+    addPlaylistHandler,
+    deletePlaylistHandler,
+    addToPlaylistHandler,
+    deleteFromPlaylistHandler,
+  };
+
   return (
-    <PlaylistContext.Provider
-      value={{
-        playlistState,
-        addPlaylistHandler,
-        deletePlaylistHandler,
-        addToPlaylistHandler,
-        deleteFromPlaylistHandler,
-      }}
-    >
+    <PlaylistContext.Provider value={value}>
       {children}
     </PlaylistContext.Provider>
   );

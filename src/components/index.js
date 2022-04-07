@@ -7,3 +7,4 @@ export { PublicRoute } from "./PublicRoute";
 export { SingleCard } from "./cards/SingleCard";
 export { Playlistcard } from "./playlistcard/Playlistcard";
 export { Modal } from "./modal/Modal";
+export { Loader } from "./loader/Loader";
