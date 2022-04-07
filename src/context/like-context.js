@@ -1,12 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useReducer } from "react";
 import { likedReducer } from "reducer/liked-reducer";
-
 import { useAuth } from "./auth-context";
 import axios from "axios";
 import { POST_LIKED_API } from "utils/apis";
@@ -17,6 +10,7 @@ const LikeContext = createContext();
 const LikeProvider = ({ children }) => {
   const {
     authState: { likes },
+    setLoading,
   } = useAuth();
   const [likedState, likedDispatch] = useReducer(likedReducer, {
     likedList: [],
@@ -26,6 +20,7 @@ const LikeProvider = ({ children }) => {
   const addToLikeHandler = async (item) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setLoading(true);
       const response = await axios.post(
         POST_LIKED_API,
         {
@@ -37,13 +32,17 @@ const LikeProvider = ({ children }) => {
           },
         }
       );
+      const { likes } = response.data;
       setToastVal((prevVal) => ({
         ...prevVal,
         msg: "Added in liked videos",
         isOpen: "true",
         bg: "green",
       }));
-      likedDispatch({ type: "SET_LIKED", payload: response.data.likes });
+      likedDispatch({
+        type: "SET_LIKED",
+        payload: likes,
+      });
     } catch (err) {
       console.log(err);
       setToastVal((prevVal) => ({
@@ -53,12 +52,14 @@ const LikeProvider = ({ children }) => {
         bg: "Red",
       }));
     }
+    setLoading(false);
   };
   const removeFromLikeHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setLoading(true);
       const response = await axios.delete(
-        `/api/user/likes/${_id}`,
+        `${POST_LIKED_API}/${_id}`,
 
         {
           headers: {
@@ -66,25 +67,21 @@ const LikeProvider = ({ children }) => {
           },
         }
       );
+      const { likes } = response.data;
       setToastVal((prevVal) => ({
         ...prevVal,
         msg: "Removed from  liked videos",
         isOpen: "true",
         bg: "red",
       }));
-      likedDispatch({ type: "SET_LIKED", payload: response.data.likes });
+      likedDispatch({ type: "SET_LIKED", payload: likes });
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
-
-  return (
-    <LikeContext.Provider
-      value={{ likedState, addToLikeHandler, removeFromLikeHandler }}
-    >
-      {children}
-    </LikeContext.Provider>
-  );
+  const value = { likedState, addToLikeHandler, removeFromLikeHandler };
+  return <LikeContext.Provider value={value}>{children}</LikeContext.Provider>;
 };
 
 const useLike = () => useContext(LikeContext);

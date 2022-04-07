@@ -95,10 +95,13 @@
   transform: scale(1.02, 1.02);
 }
 @media only screen and (max-width: 768px) {
-  .cardContainer {
-    width: 100%;
+  .cardContainer,
+  .emptyLikeContainer {
+    width: 100vw;
+    margin-left: 0;
+
   }
-  .videoCard {
-    padding: 1rem auto;
+  .cardContainer{
+    justify-content: center;
   }
 }

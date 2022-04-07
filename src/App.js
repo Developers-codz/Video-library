@@ -22,11 +22,14 @@ import {
   WatchLater,
 } from "page";
 import { useToast } from "context/toast-context";
+import { Loader } from "components";
+import { useAuth } from "context/auth-context";
 
 function App() {
   const {
     isModalOpen: { modalState },
   } = useToast();
+  const { isLoading } = useAuth();
   return (
     <>
       <Toast />
@@ -39,33 +42,39 @@ function App() {
             : { pointerEvents: "auto", opacity: "1" }
         }
       >
-        <Navbar />
-        <Aside />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <Navbar />
+            <Aside />
 
-        <Routes>
-          <Route path="/" index element={<Home />} />
-          <Route path="/video" element={<Home />}>
-            <Route path=":videoId" element={<Video />} />
-          </Route>
+            <Routes>
+              <Route path="/" index element={<Home />} />
+              <Route path="/video" element={<Home />}>
+                <Route path=":videoId" element={<Video />} />
+              </Route>
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/playlist" element={<Playlist />}>
-              <Route path=":playlistAction" element={<Playlist />} />
-            </Route>
-            <Route path="/history" element={<History />} />
-            <Route path="/liked" element={<Liked />} />
-            <Route path="watchlater" element={<WatchLater />} />
-            <Route path="/profile" element={<Profile />}>
-              <Route path=":profileAction" element={<Profile />} />
-            </Route>
-          </Route>
-          <Route path="/mockman" element={<MockMan />} />
-          <Route element={<PublicRoute />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Route>
-          <Route path="/*" element={<Pagenotfound />} />
-        </Routes>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/playlist" element={<Playlist />}>
+                  <Route path=":playlistAction" element={<Playlist />} />
+                </Route>
+                <Route path="/history" element={<History />} />
+                <Route path="/liked" element={<Liked />} />
+                <Route path="watchlater" element={<WatchLater />} />
+                <Route path="/profile" element={<Profile />}>
+                  <Route path=":profileAction" element={<Profile />} />
+                </Route>
+              </Route>
+              <Route path="/mockman" element={<MockMan />} />
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </Route>
+              <Route path="/*" element={<Pagenotfound />} />
+            </Routes>
+          </>
+        )}
       </div>
     </>
   );

@@ -14,17 +14,14 @@ const ToastProvider = ({ children }) => {
     modalState: false,
     videoData: null,
   });
+  const value = {
+    toastVal,
+    setToastVal,
+    isModalOpen,
+    setModalOpen,
+  };
   return (
-    <ToastContext.Provider
-      value={{
-        toastVal,
-        setToastVal,
-        isModalOpen,
-        setModalOpen,
-      }}
-    >
-      {children}
-    </ToastContext.Provider>
+    <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
   );
 };
 const useToast = () => useContext(ToastContext);

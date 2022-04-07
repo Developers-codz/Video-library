@@ -27,7 +27,7 @@ export const Home = () => {
             <NavLink
               to={`/video/${video._id}`}
               key={video._id}
-              className="decor-none light-text"
+              className={styles.videoCardLink}
               onClick={() => addToHistoryHandler(video)}
             >
               <div className={styles.videoCard}>

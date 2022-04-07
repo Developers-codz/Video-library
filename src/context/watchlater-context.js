@@ -3,6 +3,7 @@ import { useContext, createContext, useReducer } from "react";
 import { POST_WATCHLATER_API } from "utils/apis";
 import { watchlaterReducer } from "reducer";
 import { useToast } from "./toast-context";
+import { useAuth } from "./auth-context";
 
 const WatchLaterContext = createContext(null);
 
@@ -11,9 +12,11 @@ const WatchLaterProvider = ({ children }) => {
     watchlaterList: [],
   });
   const { setToastVal } = useToast();
+  const { setLoading } = useAuth();
   const addWatchcLaterHandler = async (video) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setLoading(true);
       const response = await axios.post(
         POST_WATCHLATER_API,
         {
@@ -40,11 +43,13 @@ const WatchLaterProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
   const removeFromWatchLaterHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      const response = await axios.delete(`/api/user/watchlater/${_id}`, {
+      setLoading(true);
+      const response = await axios.delete(`${POST_WATCHLATER_API}/${_id}`, {
         headers: {
           authorization: encodedToken,
         },
@@ -63,6 +68,7 @@ const WatchLaterProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
   const value = {
     watchlaterState,

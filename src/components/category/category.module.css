@@ -13,6 +13,7 @@
   padding: 0.5rem 1rem;
   border-radius: 10px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .category:hover {
   color: var(--COLOR-PRIMARY);
@@ -25,7 +26,8 @@
 }
 @media only screen and (max-width: 768px) {
   .categoryWrapper {
-    margin: 1rem 0;
+    margin: 1rem 0.2rem;
     width: 100vw;
+    overflow-x: scroll;
   }
 }

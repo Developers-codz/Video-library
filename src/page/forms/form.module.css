@@ -1,6 +1,9 @@
 .formWrapper {
   text-align: center;
 }
+.formWrapper > h2 {
+  white-space: nowrap;
+}
 .formContainer {
   padding: 1rem 0;
   margin: 5rem 0;
@@ -38,4 +41,12 @@
 .passInput,
 .passInputWrapper {
   position: relative;
+}
+@media only screen and (max-width: 768px) {
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

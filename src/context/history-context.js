@@ -2,13 +2,14 @@ import axios from "axios";
 import { useContext, createContext, useReducer } from "react";
 import { POST_HISTORY_API, CLEAR_ALL_HISTORY_API } from "utils/apis";
 import { historyReducer } from "reducer";
-
+import { useAuth } from "./auth-context";
 const HistoryContext = createContext(null);
 
 const HistoryProvider = ({ children }) => {
   const [historyState, historyDispatch] = useReducer(historyReducer, {
     historyList: [],
   });
+  const { setLoading } = useAuth();
 
   const addToHistoryHandler = async (video) => {
     const encodedToken = localStorage.getItem("token");
@@ -35,7 +36,7 @@ const HistoryProvider = ({ children }) => {
   const removeFromHistoryHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      const response = await axios.delete(`/api/user/history/${_id}`, {
+      const response = await axios.delete(`${POST_HISTORY_API}/${_id}`, {
         headers: {
           authorization: encodedToken,
         },
@@ -50,6 +51,7 @@ const HistoryProvider = ({ children }) => {
   const clearHistoryHandler = async () => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setLoading(true);
       const response = await axios.delete(CLEAR_ALL_HISTORY_API, {
         headers: {
           authorization: encodedToken,
@@ -60,6 +62,7 @@ const HistoryProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
 
   const value = {
