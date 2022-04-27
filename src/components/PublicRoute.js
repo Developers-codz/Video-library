@@ -6,7 +6,8 @@ const PublicRoute = () => {
     authState: { authToken },
   } = useAuth();
   const location = useLocation()
-  console.log(location)
+  
+const path1 = location?.state?.from?.pathname
   return authToken === "" ? <Outlet /> : <Navigate to={location.state.from.pathname} />;
 };
 

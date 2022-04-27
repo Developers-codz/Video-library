@@ -6,7 +6,6 @@ const ProtectedRoute = () => {
     authState: { authToken },
   } = useAuth();
   const location = useLocation();
-  console.log(location)
   return authToken === "" ? <Navigate to="/login" state={{from: location}} /> : <Outlet />;
 };
 export { ProtectedRoute };

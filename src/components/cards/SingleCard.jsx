@@ -15,7 +15,7 @@ export const SingleCard = ({ item, flag }) => {
 
   return (
     <div className={styles.videoCard} key={item._id}>
-      <NavLink to={`/${item._id}`} className="decor-none light-text">
+      <NavLink to={`/video/${item._id}`} className="decor-none light-text">
         <img src={item.gif} className={styles.image} />
       </NavLink>
       <div className={styles.videoDetailWrapper}>
