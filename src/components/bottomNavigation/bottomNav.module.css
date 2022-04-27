@@ -1,0 +1,13 @@
+.bottomNavWrapper{
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom:0;
+    background-color: black;
+    padding:.3rem 0;
+    width:100vw;
+}
+.bottomNavWrapper > li {
+    list-style: none;
+}
+
