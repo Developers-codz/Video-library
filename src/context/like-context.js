@@ -44,13 +44,22 @@ const LikeProvider = ({ children }) => {
         payload: likes,
       });
     } catch (err) {
-      console.log(err);
+    const {status} = err.response;
+
+    if(status === 500){
       setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: "Please login first",
+        isOpen: "true",
+        bg: "Red",
+      }));
+    }
+      else {setToastVal((prevVal) => ({
         ...prevVal,
         msg: "Already in liked videos",
         isOpen: "true",
         bg: "Red",
-      }));
+      }));}
     }
     setLoading(false);
   };

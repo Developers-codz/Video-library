@@ -41,7 +41,16 @@ const WatchLaterProvider = ({ children }) => {
         isOpen: true,
       }));
     } catch (err) {
-      console.log(err);
+       const {status} = err.response;
+
+      if(status === 500){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Please login first",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
     setLoading(false);
   };

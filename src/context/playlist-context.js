@@ -37,7 +37,16 @@ const PlaylistProvider = ({ children }) => {
       const { playlists } = response.data;
       playlistDispatch({ type: "CREATE_PLAYLIST", payload: playlists });
     } catch (err) {
-      console.log(err);
+      const {status} = err.response;
+
+      if(status === 500){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Please login first",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
   };
 
