@@ -7,8 +7,8 @@ const PublicRoute = () => {
   } = useAuth();
   const location = useLocation()
   
-const path1 = location?.state?.from?.pathname
-  return authToken === "" ? <Outlet /> : <Navigate to={location.state.from.pathname} />;
+const prevPath = location?.state?.from?.pathname
+  return authToken === "" ? <Outlet /> : <Navigate to={prevPath ===undefined ? "/" : prevPath} />;
 };
 
 export { PublicRoute };
