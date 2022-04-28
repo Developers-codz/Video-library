@@ -3,7 +3,7 @@ export const PlaylistIcon = ({ width, height, color }) => {
     <svg
       aria-hidden="true"
       role="img"
-      class="iconify iconify--mdi"
+      className="iconify iconify--mdi"
       width={width}
       height={height}
       color={color}

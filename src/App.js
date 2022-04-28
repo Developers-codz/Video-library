@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
+
 import {
   Navbar,
   Aside,
@@ -8,6 +9,7 @@ import {
   PublicRoute,
   Modal,
   Toast,
+  BottomNavigation
 } from "components";
 import {
   Home,
@@ -73,7 +75,9 @@ function App() {
               </Route>
               <Route path="/*" element={<Pagenotfound />} />
             </Routes>
+            <BottomNavigation />
           </>
+          
         )}
       </div>
     </>
