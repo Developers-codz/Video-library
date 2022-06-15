@@ -22,6 +22,12 @@ export const Navbar = () => {
           </span>
           <span className={styles.navheading}>Play Arts</span>
         </h1>
+        <div className={styles.searchBoxWrapper}>
+        <input className={styles.searchBox} placeholder="SEARCH......" />
+        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+
+
+        </div>
         {authToken === "" ? (
           <Link to="/login">
             <span className={styles.loginIcon}>
