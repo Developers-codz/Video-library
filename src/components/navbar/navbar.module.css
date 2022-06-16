@@ -42,4 +42,7 @@
     margin: 0 1rem 0 0;
     font-size: xx-large;
   }
+  .searchBoxWrapper{
+    display: none;
+  }
 }

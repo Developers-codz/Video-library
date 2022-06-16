@@ -26,12 +26,17 @@ import {
 import { useToast } from "context/toast-context";
 import { Loader } from "components";
 import { useAuth } from "context/auth-context";
+import { useEffect } from "react";
 
 function App() {
   const {
     isModalOpen: { modalState },
   } = useToast();
-  const { isLoading } = useAuth();
+  const { isLoading,checkTokenHandler } = useAuth();
+  useEffect(()=>{
+    console.log("I called")
+    checkTokenHandler()
+  },[])
   return (
     <>
       <Toast />
