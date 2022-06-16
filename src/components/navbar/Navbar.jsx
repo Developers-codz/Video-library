@@ -1,5 +1,6 @@
 import styles from "./navbar.module.css";
 import {useState,useEffect} from "react";
+import {useNavigate} from "react-router-dom"
 import StreamOutlinedIcon from "@mui/icons-material/StreamOutlined";
 import LoginTwoToneIcon from "@mui/icons-material/LoginTwoTone";
 import { useAside } from "context/aside-context";
@@ -19,7 +20,7 @@ export const Navbar = () => {
     authState: { authToken },
   } = useAuth();
 
-
+const navigate = useNavigate()
   const changeHandler = () =>{
     videoDispatch({type:"SEARCH",payload:searchText.toLowerCase()})
   }
@@ -45,7 +46,10 @@ export const Navbar = () => {
             className={styles.searchBox}
             placeholder="SEARCH......"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) =>{ 
+              setSearchText(e.target.value)
+            navigate("/")
+            }}
           />
           <i className="fa fa-search fa-lg" aria-hidden="true"></i>
         </div>
