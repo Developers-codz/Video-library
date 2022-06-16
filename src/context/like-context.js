@@ -44,22 +44,23 @@ const LikeProvider = ({ children }) => {
         payload: likes,
       });
     } catch (err) {
-    const {status} = err.response;
+      const { status } = err.response;
 
-    if(status === 500){
-      setToastVal((prevVal) => ({
-        ...prevVal,
-        msg: "Please login first",
-        isOpen: "true",
-        bg: "Red",
-      }));
-    }
-      else {setToastVal((prevVal) => ({
-        ...prevVal,
-        msg: "Already in liked videos",
-        isOpen: "true",
-        bg: "Red",
-      }));}
+      if (status === 500) {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Please login first",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      } else {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Already in liked videos",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
     setLoading(false);
   };
@@ -89,7 +90,15 @@ const LikeProvider = ({ children }) => {
     }
     setLoading(false);
   };
-  const value = { likedState, addToLikeHandler, removeFromLikeHandler };
+  const likeLogoutHandler = () => {
+    likedDispatch({ type: "LOGOUT" });
+  };
+  const value = {
+    likedState,
+    addToLikeHandler,
+    removeFromLikeHandler,
+    likeLogoutHandler,
+  };
   return <LikeContext.Provider value={value}>{children}</LikeContext.Provider>;
 };
 

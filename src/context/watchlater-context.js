@@ -79,10 +79,15 @@ const WatchLaterProvider = ({ children }) => {
     }
     setLoading(false);
   };
+
+  const watchlaterLogoutHandler = () =>{
+    watchlaterDispatch({type:"LOGOUT"})
+  }
   const value = {
     watchlaterState,
     addWatchcLaterHandler,
     removeFromWatchLaterHandler,
+    watchlaterLogoutHandler
   };
   return (
     <WatchLaterContext.Provider value={value}>

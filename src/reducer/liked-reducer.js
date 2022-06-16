@@ -3,6 +3,9 @@ export const likedReducer = (state, action) => {
     case "SET_LIKED": {
       return { ...state, likedList: action.payload };
     }
+    case "LOGOUT" : {
+      return {...state,likedList:[]}
+    }
     default: {
       return { ...state };
     }

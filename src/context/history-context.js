@@ -64,12 +64,16 @@ const HistoryProvider = ({ children }) => {
     }
     setLoading(false);
   };
+  const historyLogoutHandler = () => {
+    historyDispatch({ type: "LOGOUT" });
+  };
 
   const value = {
     historyState,
     addToHistoryHandler,
     removeFromHistoryHandler,
     clearHistoryHandler,
+    historyLogoutHandler
   };
   return (
     <HistoryContext.Provider value={value}>{children}</HistoryContext.Provider>

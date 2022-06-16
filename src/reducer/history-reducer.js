@@ -8,6 +8,8 @@ export const historyReducer = (state, { type, payload }) => {
 
     case "CLEAR_ALL_HISTORY":
       return { ...state, historyList: payload };
+    case "LOGOUT" : 
+    return {...state,historyList:[]}
 
     default:
       return state;

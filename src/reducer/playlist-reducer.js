@@ -24,6 +24,9 @@ export const playlistReducer = (state, action) => {
         ),
       };
     }
+    case "LOGOUT" :{
+      return {...state,playlistList:[]}
+    }
     default: {
       return { ...state };
     }

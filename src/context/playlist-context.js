@@ -127,12 +127,18 @@ const PlaylistProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const playlistLogoutHandler = () => {
+    playlistDispatch({ type: "LOGOUT" });
+  };
+
   const value = {
     playlistState,
     addPlaylistHandler,
     deletePlaylistHandler,
     addToPlaylistHandler,
     deleteFromPlaylistHandler,
+    playlistLogoutHandler
   };
 
   return (
