@@ -17,6 +17,23 @@ const LikeProvider = ({ children }) => {
   });
   const { setToastVal } = useToast();
 
+  const getLikedVideos = async ()=>{
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get("/api/user/likes",{headers: {
+        authorization: encodedToken,
+      }})
+      likedDispatch({
+        type: "SET_LIKED",
+        payload: response.data.likes,
+      });
+
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+
   const addToLikeHandler = async (item) => {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -44,13 +61,23 @@ const LikeProvider = ({ children }) => {
         payload: likes,
       });
     } catch (err) {
-      console.log(err);
-      setToastVal((prevVal) => ({
-        ...prevVal,
-        msg: "Already in liked videos",
-        isOpen: "true",
-        bg: "Red",
-      }));
+      const { status } = err.response;
+
+      if (status === 500) {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Please login first",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      } else {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Already in liked videos",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
     setLoading(false);
   };
@@ -80,7 +107,16 @@ const LikeProvider = ({ children }) => {
     }
     setLoading(false);
   };
-  const value = { likedState, addToLikeHandler, removeFromLikeHandler };
+  const likeLogoutHandler = () => {
+    likedDispatch({ type: "LOGOUT" });
+  };
+  const value = {
+    likedState,
+    addToLikeHandler,
+    removeFromLikeHandler,
+    likeLogoutHandler,
+    getLikedVideos
+  };
   return <LikeContext.Provider value={value}>{children}</LikeContext.Provider>;
 };
 

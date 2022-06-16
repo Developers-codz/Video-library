@@ -26,7 +26,7 @@ export const Playlistcard = ({ item, currentPlaylistId, title }) => {
         </div>
         <div className={styles.iconWrapper} onClick={clickHandler}>
           <div>
-            <i class="fa fa-trash"></i>
+            <i className="fa fa-trash"></i>
           </div>
         </div>
       </div>

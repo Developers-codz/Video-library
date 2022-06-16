@@ -4,12 +4,16 @@ import { useLike } from "context/like-context";
 import { LikedIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "functions";
+import { useEffect } from "react";
 
 export const Liked = () => {
   useDocumentTitle("Liked");
   const {
-    likedState: { likedList },
+    likedState: { likedList },getLikedVideos
   } = useLike();
+  useEffect(()=>{
+    getLikedVideos()
+  },[])
 
   return (
     <>

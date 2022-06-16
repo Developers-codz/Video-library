@@ -13,6 +13,24 @@ const WatchLaterProvider = ({ children }) => {
   });
   const { setToastVal } = useToast();
   const { setLoading } = useAuth();
+
+  const getWatchLaterVideos = async ()=>{
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get("/api/user/watchlater",{headers: {
+        authorization: encodedToken,
+      }})
+      watchlaterDispatch({
+        type: "ADD_TO_WATCHLATER",
+        payload: response.data.watchlater,
+      });
+
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+
   const addWatchcLaterHandler = async (video) => {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -41,7 +59,16 @@ const WatchLaterProvider = ({ children }) => {
         isOpen: true,
       }));
     } catch (err) {
-      console.log(err);
+       const {status} = err.response;
+
+      if(status === 500){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Please login first",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
     setLoading(false);
   };
@@ -70,10 +97,16 @@ const WatchLaterProvider = ({ children }) => {
     }
     setLoading(false);
   };
+
+  const watchlaterLogoutHandler = () =>{
+    watchlaterDispatch({type:"LOGOUT"})
+  }
   const value = {
     watchlaterState,
     addWatchcLaterHandler,
     removeFromWatchLaterHandler,
+    watchlaterLogoutHandler,
+    getWatchLaterVideos
   };
   return (
     <WatchLaterContext.Provider value={value}>

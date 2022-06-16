@@ -2,10 +2,8 @@ import styles from "../../page/liked/liked.module.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getIcon } from "functions";
-// import { useLike } from "context/like-context";
-// import { useHistory } from "context/history-context";
-// import { useWatchLater } from "context/watchlater-context";
 import { useDeleteFunction } from "functions";
+
 export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
   const getFunctionName = useDeleteFunction();
@@ -15,8 +13,8 @@ export const SingleCard = ({ item, flag }) => {
 
   return (
     <div className={styles.videoCard} key={item._id}>
-      <NavLink to={`/${item._id}`} className="decor-none light-text">
-        <img src={item.gif} className={styles.image} />
+      <NavLink to={`/video/${item._id}`} className="decor-none light-text">
+        <img src={item.gif} className={styles.image} alt={item.title} />
       </NavLink>
       <div className={styles.videoDetailWrapper}>
         <div className={styles.videoDetail}>

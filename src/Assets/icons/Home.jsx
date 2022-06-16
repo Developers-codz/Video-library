@@ -3,7 +3,7 @@ export const Home = () => {
     <svg
       aria-hidden="true"
       role="img"
-      class="iconify iconify--mdi"
+      className="iconify iconify--mdi"
       width="32"
       height="32"
       preserveAspectRatio="xMidYMid meet"

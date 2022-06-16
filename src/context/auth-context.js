@@ -79,6 +79,23 @@ const AuthProvider = ({ children }) => {
     }
     setLoading(false);
   };
+
+const checkTokenHandler = async () =>{
+  const encodedToken = localStorage.getItem("token")
+  if(encodedToken) {
+    try{
+      const response = await axios.post("/api/auth/verify",{
+        encodedToken,
+      });
+      authDispatch({type:"SET_USER",payload:response.data.user})
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+  
+
+}
   const logoutHandler = () => {
     setLoading(true);
     setToastVal((prevVal) => ({
@@ -99,6 +116,7 @@ const AuthProvider = ({ children }) => {
     logoutHandler,
     isLoading,
     setLoading,
+    checkTokenHandler
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

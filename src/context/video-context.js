@@ -29,6 +29,7 @@ const VideoProvider = ({ children }) => {
 
   const [videoState, videoDispatch] = useReducer(videoReducer, {
     categoryBy: null,
+    searchBy:""
   });
   const value = { videos, setVideos, videoState, videoDispatch };
 

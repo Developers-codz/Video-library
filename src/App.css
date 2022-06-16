@@ -31,6 +31,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+
 }
 .aside {
   width: 20vw;
@@ -59,11 +61,15 @@ body {
 .pass {
   top: 24rem;
 }
+.bottom-nav{
+  display: none;
+}
 @media only screen and (max-width: 768px) {
   .App {
     grid-template-areas:
       "nav"
-      "main";
+      "main"
+      "bottomNav";
   }
   .aside {
     display: block;
@@ -78,5 +84,9 @@ body {
   .main {
     width: 100vw;
     text-align: center;
+  }
+  .bottom-nav{
+    display: block;
+    grid-area: bottomNav;
   }
 }

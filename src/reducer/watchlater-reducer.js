@@ -6,6 +6,9 @@ export const watchlaterReducer = (state, { type, payload }) => {
     case "REMOVE_FROM_WATCHLATER": {
       return { ...state, watchlaterList: payload };
     }
+    case "LOGOUT" : {
+      return {...state,watchlaterList:[]}
+    }
     default: {
       return state;
     }

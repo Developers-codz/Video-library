@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import MockMan from "mockman-js";
+
 import {
   Navbar,
   Aside,
@@ -8,6 +9,7 @@ import {
   PublicRoute,
   Modal,
   Toast,
+  BottomNavigation
 } from "components";
 import {
   Home,
@@ -24,12 +26,18 @@ import {
 import { useToast } from "context/toast-context";
 import { Loader } from "components";
 import { useAuth } from "context/auth-context";
+import { useEffect } from "react";
 
 function App() {
   const {
     isModalOpen: { modalState },
   } = useToast();
-  const { isLoading } = useAuth();
+  const { isLoading,checkTokenHandler } = useAuth();
+
+  useEffect(()=>{
+    checkTokenHandler()
+    
+  },[])
   return (
     <>
       <Toast />
@@ -73,7 +81,9 @@ function App() {
               </Route>
               <Route path="/*" element={<Pagenotfound />} />
             </Routes>
+            <BottomNavigation />
           </>
+          
         )}
       </div>
     </>

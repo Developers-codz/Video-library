@@ -43,6 +43,18 @@ export const authReducer = (state, action) => {
       localStorage.setItem("token", "");
       return userInitialState;
     }
+    case "SET_USER" : {
+      const { firstName, lastName, _id, email } = action.payload;
+      const token = action.token;
+      return {
+        ...state,id:_id,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        isAuthTokenPresent: true,
+        authToken: token,
+      }
+    }
 
     default:
       return state;

@@ -14,9 +14,35 @@
   cursor: pointer;
   color: var(--COLOR-PRIMARY);
 }
+.searchBoxWrapper{
+  position:relative
+}
+.searchBox{
+  border:1px solid var(--COLOR-DEFAULT-TEXT);
+  background-color: transparent;
+  width:35rem;
+  padding:.5rem 1rem;
+  color:var(--COLOR-DEFAULT-TEXT);
+  font-size: 1.2rem;
+
+}
+.searchBox:focus{
+  outline:1px solid var(--COLOR-PRIMARY);
+  border:1px solid var(--COLOR-PRIMARY);
+}
+.searchBoxWrapper > i {
+  color:var(--COLOR-PRIMARY);
+  position: absolute;
+  right:.5rem;
+  top:.7rem
+}
+
 @media only screen and (max-width: 768px) {
   .logowrapper {
     margin: 0 1rem 0 0;
     font-size: xx-large;
+  }
+  .searchBoxWrapper{
+    display: none;
   }
 }

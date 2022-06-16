@@ -2,6 +2,10 @@ import styles from "./profile.module.css";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "context/auth-context";
 import { useDocumentTitle } from "functions";
+import { useLike } from "context/like-context";
+import { useWatchLater } from "context/watchlater-context";
+import { usePlaylist } from "context/playlist-context";
+import { useHistory } from "context/history-context";
 
 export const Profile = () => {
   useDocumentTitle("Profile");
@@ -11,6 +15,17 @@ export const Profile = () => {
     authState: { firstName, email },
     logoutHandler,
   } = useAuth();
+  const {likeLogoutHandler} = useLike();
+  const {watchlaterLogoutHandler} = useWatchLater();
+  const {playlistLogoutHandler} = usePlaylist();
+  const {historyLogoutHandler} = useHistory()
+  const handleLogout = () =>{
+    logoutHandler();
+    likeLogoutHandler();
+    watchlaterLogoutHandler();
+    playlistLogoutHandler();
+    historyLogoutHandler();
+  }
   return (
     <>
       <div className={styles.profileWrapper}>
@@ -35,7 +50,7 @@ export const Profile = () => {
         {profileAction === "settings" ? (
           <div className={styles.rightPane}>
             <h3>Account Settings</h3>
-            <button onClick={() => logoutHandler()}>Log Out</button>
+            <button onClick={handleLogout}>Log Out</button>
           </div>
         ) : (
           <div className={styles.rightPane}>

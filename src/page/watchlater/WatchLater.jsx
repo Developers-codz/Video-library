@@ -1,4 +1,5 @@
 import styles from "../liked/liked.module.css";
+import { useEffect } from "react";
 import { WatchlaterIcon } from "Assets/icons";
 import { Link } from "react-router-dom";
 import { useWatchLater } from "context/watchlater-context";
@@ -8,8 +9,11 @@ import { useDocumentTitle } from "functions";
 export const WatchLater = () => {
   useDocumentTitle("Watch Later");
   const {
-    watchlaterState: { watchlaterList },
+    watchlaterState: { watchlaterList },getWatchLaterVideos
   } = useWatchLater();
+  useEffect(()=>{
+    getWatchLaterVideos()
+  },[])
 
   return (
     <>
