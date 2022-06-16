@@ -4,13 +4,17 @@ import { Link } from "react-router-dom";
 import { useHistory } from "context/history-context";
 import { SingleCard } from "components";
 import { useDocumentTitle } from "functions";
+import { useEffect } from "react";
 
 export const History = () => {
   useDocumentTitle("History");
   const {
     historyState: { historyList },
-    clearHistoryHandler,
+    clearHistoryHandler,getHistoryVideos
   } = useHistory();
+  useEffect(()=>{
+    getHistoryVideos()
+  },[])
   return (
     <>
       {" "}
@@ -30,7 +34,7 @@ export const History = () => {
           >
             Clear History <i className="fa fa-trash"></i>
           </button>
-          <div class={styles.historyCardWrapper}></div>
+          <div className={styles.historyCardWrapper}></div>
           {historyList.map((history) => (
             <SingleCard item={history} flag={"history"} key={history._id} />
           ))}

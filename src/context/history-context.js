@@ -11,6 +11,23 @@ const HistoryProvider = ({ children }) => {
   });
   const { setLoading } = useAuth();
 
+
+  const getHistoryVideos = async ()=>{
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get("/api/user/history",{headers: {
+        authorization: encodedToken,
+      }})
+      historyDispatch({
+        type: "ADD_IN_HISTORY",
+        payload: response.data.history,
+      });
+
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
   const addToHistoryHandler = async (video) => {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -73,7 +90,8 @@ const HistoryProvider = ({ children }) => {
     addToHistoryHandler,
     removeFromHistoryHandler,
     clearHistoryHandler,
-    historyLogoutHandler
+    historyLogoutHandler,
+    getHistoryVideos
   };
   return (
     <HistoryContext.Provider value={value}>{children}</HistoryContext.Provider>

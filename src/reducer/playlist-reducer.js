@@ -1,5 +1,8 @@
 export const playlistReducer = (state, action) => {
   switch (action.type) {
+        case "SET_PLAYLIST" : {
+          return {...state,playlistList: action.payload}
+        }
     case "CREATE_PLAYLIST": {
       return { ...state, playlistList: action.payload };
     }

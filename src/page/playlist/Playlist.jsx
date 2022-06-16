@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { usePlaylist } from "context/playlist-context";
 import { Playlistcard } from "components";
 import { useDocumentTitle } from "functions";
+import { useEffect } from "react";
 export const Playlist = () => {
   useDocumentTitle("Playlist");
   const param = useParams();
@@ -11,11 +12,14 @@ export const Playlist = () => {
   const playlistAction = param.playlistAction;
   const {
     playlistState: { playlistList },
-    deletePlaylistHandler,
+    deletePlaylistHandler,getPlaylistVideos
   } = usePlaylist();
   const currentPlaylist = playlistList.find(
     ({ _id }) => _id === playlistAction
   );
+  useEffect(()=>{
+    getPlaylistVideos()
+  },[])
 
   return (
     <>

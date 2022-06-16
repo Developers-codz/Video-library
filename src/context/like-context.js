@@ -17,6 +17,23 @@ const LikeProvider = ({ children }) => {
   });
   const { setToastVal } = useToast();
 
+  const getLikedVideos = async ()=>{
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get("/api/user/likes",{headers: {
+        authorization: encodedToken,
+      }})
+      likedDispatch({
+        type: "SET_LIKED",
+        payload: response.data.likes,
+      });
+
+    }
+    catch(err) {
+      console.log(err)
+    }
+  }
+
   const addToLikeHandler = async (item) => {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -98,6 +115,7 @@ const LikeProvider = ({ children }) => {
     addToLikeHandler,
     removeFromLikeHandler,
     likeLogoutHandler,
+    getLikedVideos
   };
   return <LikeContext.Provider value={value}>{children}</LikeContext.Provider>;
 };

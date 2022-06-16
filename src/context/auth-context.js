@@ -82,13 +82,11 @@ const AuthProvider = ({ children }) => {
 
 const checkTokenHandler = async () =>{
   const encodedToken = localStorage.getItem("token")
-  console.log(encodedToken)
   if(encodedToken) {
     try{
       const response = await axios.post("/api/auth/verify",{
         encodedToken,
       });
-      console.log(response.data.user)
       authDispatch({type:"SET_USER",payload:response.data.user})
     }
     catch(err){

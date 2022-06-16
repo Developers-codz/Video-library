@@ -33,9 +33,10 @@ function App() {
     isModalOpen: { modalState },
   } = useToast();
   const { isLoading,checkTokenHandler } = useAuth();
+
   useEffect(()=>{
-    console.log("I called")
     checkTokenHandler()
+    
   },[])
   return (
     <>
