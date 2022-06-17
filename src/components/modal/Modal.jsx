@@ -37,8 +37,20 @@ export const Modal = () => {
         isOpen: true,
       }));
     } else {
-      addPlaylistHandler(inputText);
-      setInputText("");
+      if(playlistList.find(playlist => playlist.title === inputText)){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Playlist Already Exists",
+          bg: "red",
+          isOpen: true,
+        }));
+        setInputText("");
+      }
+      else {
+
+        addPlaylistHandler(inputText);
+        setInputText("");
+      }
     }
   };
 
