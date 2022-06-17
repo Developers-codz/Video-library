@@ -12,7 +12,7 @@ export const Playlist = () => {
   const playlistAction = param.playlistAction;
   const {
     playlistState: { playlistList },
-    deletePlaylistHandler,getPlaylistVideos
+    deletePlaylistHandler,getPlaylistVideos,isPlaylistBtnDisabled
   } = usePlaylist();
   const currentPlaylist = playlistList.find(
     ({ _id }) => _id === playlistAction
@@ -44,13 +44,15 @@ export const Playlist = () => {
                   >
                     <h3>{title}</h3>
                   </Link>
-                  <i
-                    className="fa fa-trash"
-                    onClick={() => {
+                  <button className={styles.delPlaylistBtn} disabled={isPlaylistBtnDisabled} onClick={() => {
                       deletePlaylistHandler(_id);
                       navigate("/playlist");
-                    }}
+                    }}>
+
+                  <i
+                    className="fa fa-trash"
                   ></i>
+                  </button>
                   <div className={styles.showPlaylistnum}>
                     <h1>+{videos.length}</h1>
                   </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, createContext, useReducer } from "react";
+import { useContext, createContext, useReducer,useState } from "react";
 import { POST_WATCHLATER_API } from "utils/apis";
 import { watchlaterReducer } from "reducer";
 import { useToast } from "./toast-context";
@@ -11,6 +11,7 @@ const WatchLaterProvider = ({ children }) => {
   const [watchlaterState, watchlaterDispatch] = useReducer(watchlaterReducer, {
     watchlaterList: [],
   });
+  const [isWatchBtnDisabled,setWatchDisabled] = useState(false)
   const { setToastVal } = useToast();
   const { setLoading } = useAuth();
 
@@ -34,7 +35,7 @@ const WatchLaterProvider = ({ children }) => {
   const addWatchcLaterHandler = async (video) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      setLoading(true);
+      setWatchDisabled(true);
       const response = await axios.post(
         POST_WATCHLATER_API,
         {
@@ -60,7 +61,6 @@ const WatchLaterProvider = ({ children }) => {
       }));
     } catch (err) {
        const {status} = err.response;
-
       if(status === 500){
         setToastVal((prevVal) => ({
           ...prevVal,
@@ -69,13 +69,21 @@ const WatchLaterProvider = ({ children }) => {
           bg: "Red",
         }));
       }
+      if(status === 409){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Already in watch later",
+          isOpen: "true",
+          bg: "Red",
+        }));
+      }
     }
-    setLoading(false);
+    setWatchDisabled(false);
   };
   const removeFromWatchLaterHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      setLoading(true);
+      setWatchDisabled(true);
       const response = await axios.delete(`${POST_WATCHLATER_API}/${_id}`, {
         headers: {
           authorization: encodedToken,
@@ -95,7 +103,7 @@ const WatchLaterProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
+    setWatchDisabled(false);
   };
 
   const watchlaterLogoutHandler = () =>{
@@ -106,7 +114,8 @@ const WatchLaterProvider = ({ children }) => {
     addWatchcLaterHandler,
     removeFromWatchLaterHandler,
     watchlaterLogoutHandler,
-    getWatchLaterVideos
+    getWatchLaterVideos,
+    isWatchBtnDisabled
   };
   return (
     <WatchLaterContext.Provider value={value}>

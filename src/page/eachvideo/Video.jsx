@@ -12,15 +12,14 @@ import { useDocumentTitle } from "functions";
 export const Video = () => {
   useDocumentTitle("Video");
   const { videos } = useVideo();
-  const { addToLikeHandler } = useLike();
-  const { addWatchcLaterHandler } = useWatchLater();
+  const { addToLikeHandler,isDisabled } = useLike();
+  const { addWatchcLaterHandler,isWatchBtnDisabled } = useWatchLater();
   let params = useParams();
   const getVideo = (id) => videos?.find(({ videoLink }) => videoLink === id);
   let video = getVideo(params.videoId, 10);
+ 
 
   const { setModalOpen } = useToast();
-
-  // const { title, views, creator, videoLink, created } = video;
 
   return (
     <div className={styles.videoContainer}>
@@ -38,20 +37,18 @@ export const Video = () => {
         </small>
       </div>
       <div className={styles.videoBtnWrapper}>
-        <div
-          className={styles.videoActionBtn}
-          onClick={() => addToLikeHandler(video)}
-        >
+        <button className={styles.videoActionBtn} disabled={isDisabled} onClick={() => addToLikeHandler(video)}>
           <ThumbUpTwoToneIcon fontSize="large" />
           <small>Like</small>
-        </div>
-        <div
-          className={styles.videoActionBtn}
+        
+        </button>
+        <button
+          className={styles.videoActionBtn} disabled={isWatchBtnDisabled}
           onClick={() => addWatchcLaterHandler(video)}
         >
           <BookmarkAddTwoToneIcon fontSize="large" />
           <small>Save</small>
-        </div>
+        </button>
         <div
           className={styles.videoActionBtn}
           onClick={() =>

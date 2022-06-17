@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer,useState } from "react";
 import { likedReducer } from "reducer/liked-reducer";
 import { useAuth } from "./auth-context";
 import axios from "axios";
@@ -15,6 +15,7 @@ const LikeProvider = ({ children }) => {
   const [likedState, likedDispatch] = useReducer(likedReducer, {
     likedList: [],
   });
+  const [isDisabled,setDisabled] = useState(false)
   const { setToastVal } = useToast();
 
   const getLikedVideos = async ()=>{
@@ -37,7 +38,7 @@ const LikeProvider = ({ children }) => {
   const addToLikeHandler = async (item) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      setLoading(true);
+      setDisabled(true);
       const response = await axios.post(
         POST_LIKED_API,
         {
@@ -79,12 +80,12 @@ const LikeProvider = ({ children }) => {
         }));
       }
     }
-    setLoading(false);
+    setDisabled(false);
   };
   const removeFromLikeHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      setLoading(true);
+      setDisabled(true);
       const response = await axios.delete(
         `${POST_LIKED_API}/${_id}`,
 
@@ -105,7 +106,7 @@ const LikeProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
+    setDisabled(false);
   };
   const likeLogoutHandler = () => {
     likedDispatch({ type: "LOGOUT" });
@@ -115,7 +116,8 @@ const LikeProvider = ({ children }) => {
     addToLikeHandler,
     removeFromLikeHandler,
     likeLogoutHandler,
-    getLikedVideos
+    getLikedVideos,
+    isDisabled
   };
   return <LikeContext.Provider value={value}>{children}</LikeContext.Provider>;
 };

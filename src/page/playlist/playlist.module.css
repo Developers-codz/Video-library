@@ -60,9 +60,16 @@
   width: 50%;
   height: inherit;
 }
-.playlistCards > i {
+
+.delPlaylistBtn{
+  background-color: transparent;
+  color:var(--COLOR-DEFAULT-TEXT);
   z-index: 3;
   cursor: pointer;
+  border:none;
+}
+.delPlaylistBtn :disabled{
+cursor: not-allowed;
 }
 @media only screen and (max-width: 768px) {
   .emptyPlaylistContainer,
