@@ -15,26 +15,26 @@ export const Video = () => {
   const { addToLikeHandler } = useLike();
   const { addWatchcLaterHandler } = useWatchLater();
   let params = useParams();
-  const getVideo = (id) => videos.find(({ _id }) => _id === id);
+  const getVideo = (id) => videos?.find(({ videoLink }) => videoLink === id);
   let video = getVideo(params.videoId, 10);
 
   const { setModalOpen } = useToast();
 
-  const { title, views, creator, videoLink, created } = video;
+  // const { title, views, creator, videoLink, created } = video;
 
   return (
     <div className={styles.videoContainer}>
       <div className={styles.iframeWrapper}>
         <iframe
           className={styles.iframe}
-          src={`https://www.youtube.com/embed/${videoLink}`}
+          src={`https://www.youtube.com/embed/${video?.videoLink}`}
         ></iframe>
       </div>
       <div className={styles.videoPageName}>
-        <h1>{title}</h1>
-        <h2>By {creator}</h2>
+        <h1>{video?.title}</h1>
+        <h2>By {video?.creator}</h2>
         <small>
-          {views} Views | {created} ago
+          {video?.views} Views | {video?.created} ago
         </small>
       </div>
       <div className={styles.videoBtnWrapper}>
@@ -68,7 +68,7 @@ export const Video = () => {
       </div>
       <div className={styles.videoDescription}>
         <h4 className="mb-lg">Description</h4>
-        <p>{video.description}</p>
+        <p>{video?.description}</p>
       </div>
     </div>
   );
