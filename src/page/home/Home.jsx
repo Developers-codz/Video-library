@@ -15,6 +15,7 @@ export const Home = () => {
     videoState: { categoryBy,searchBy },
     videos,
   } = useVideo();
+
   const { addToHistoryHandler } = useHistory();
 
   const searchFilteredVideos = getSearchedFilteredVideos(videos,searchBy)
@@ -28,7 +29,7 @@ export const Home = () => {
         {categoryFilteredVideos.map((video) => {
           return (
             <NavLink
-              to={`/video/${video._id}`}
+              to={`/video/${video.videoLink}`}
               key={video._id}
               className={styles.videoCardLink}
               onClick={() => addToHistoryHandler(video)}

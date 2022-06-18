@@ -24,9 +24,15 @@
   flex-direction: column;
   padding: 0.5rem;
   cursor: pointer;
+  background-color: transparent;
+  border:none;
+  color:var(--COLOR-DEFAULT-TEXT)
 }
 .videoActionBtn:hover {
   transform: scale(1.07, 1.07);
+}
+.videoActionBtn:disabled{
+  cursor:not-allowed;
 }
 @media only screen and (max-width: 768px) {
   .iframe {

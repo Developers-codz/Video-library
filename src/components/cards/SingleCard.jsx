@@ -3,13 +3,19 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getIcon } from "functions";
 import { useDeleteFunction } from "functions";
+import { useLike } from "context/like-context";
+import { useWatchLater } from "context/watchlater-context";
+import { usePlaylist } from "context/playlist-context";
 
 export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
   const getFunctionName = useDeleteFunction();
   const clickHandler = () => {
-    setShowMenu(!showMenu);
+    setShowMenu(showMenu => !showMenu);
   };
+  const { isDisabled } = useLike();
+  const { isWatchBtnDisabled } = useWatchLater();
+  const {isPlaylistBtnDisabled} = usePlaylist();
 
   return (
     <div className={styles.videoCard} key={item._id}>
@@ -32,7 +38,10 @@ export const SingleCard = ({ item, flag }) => {
       </div>
       {showMenu && (
         <div className={styles.toggleMenu}>
-          <button onClick={() => getFunctionName(flag, item._id)}>
+          <button
+            onClick={() => getFunctionName(flag, item._id)}
+            disabled={isDisabled || isWatchBtnDisabled || isPlaylistBtnDisabled}
+          >
             Remove from {flag}
           </button>
         </div>

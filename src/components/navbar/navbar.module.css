@@ -43,6 +43,10 @@
     font-size: xx-large;
   }
   .searchBoxWrapper{
-    display: none;
+    order:10;
+    margin:.2rem .5rem;
+  }
+  .searchBox{
+    width:97vw;
   }
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, createContext } from "react";
+import { useContext, createContext, useState } from "react";
 import { useReducer } from "react";
 import { playlistReducer } from "reducer";
 import { POST_PLAYLIST_API } from "utils/apis";
@@ -11,6 +11,7 @@ const PlaylistProvider = ({ children }) => {
   const [playlistState, playlistDispatch] = useReducer(playlistReducer, {
     playlistList: [],
   });
+  const [isPlaylistBtnDisabled,setBtnDisabled] = useState(false)
   const { setToastVal } = useToast();
 
   const getPlaylistVideos = async ()=>{
@@ -33,6 +34,7 @@ const PlaylistProvider = ({ children }) => {
   const addPlaylistHandler = async (title) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setBtnDisabled(true)
       const response = await axios.post(
         POST_PLAYLIST_API,
         {
@@ -65,11 +67,13 @@ const PlaylistProvider = ({ children }) => {
         }));
       }
     }
+    setBtnDisabled(false)
   };
 
   const deletePlaylistHandler = async (_id) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setBtnDisabled(true)
       const response = await axios.delete(`${POST_PLAYLIST_API}/${_id}`, {
         headers: {
           authorization: encodedToken,
@@ -77,7 +81,6 @@ const PlaylistProvider = ({ children }) => {
       });
       const { playlists } = response.data;
       playlistDispatch({ type: "DELETE_PLAYLIST", payload: playlists });
-      console.log(response);
       setToastVal((prevVal) => ({
         ...prevVal,
         msg: "Playlist Deleted",
@@ -87,10 +90,12 @@ const PlaylistProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setBtnDisabled(false)
   };
   const addToPlaylistHandler = async (video, _id, title) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setBtnDisabled(true)
       const response = await axios.post(
         `${POST_PLAYLIST_API}/${_id}`,
         {
@@ -116,11 +121,13 @@ const PlaylistProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setBtnDisabled(false)
   };
 
   const deleteFromPlaylistHandler = async (playlistId, videoId, title) => {
     const encodedToken = localStorage.getItem("token");
     try {
+      setBtnDisabled(true)
       const response = await axios.delete(
         `${POST_PLAYLIST_API}/${playlistId}/${videoId}`,
         {
@@ -143,6 +150,7 @@ const PlaylistProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+    setBtnDisabled(false)
   };
 
   const playlistLogoutHandler = () => {
@@ -156,7 +164,8 @@ const PlaylistProvider = ({ children }) => {
     addToPlaylistHandler,
     deleteFromPlaylistHandler,
     playlistLogoutHandler,
-    getPlaylistVideos
+    getPlaylistVideos,
+    isPlaylistBtnDisabled
   };
 
   return (

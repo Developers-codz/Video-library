@@ -18,6 +18,7 @@ export const Modal = () => {
     playlistState: { playlistList },
     addToPlaylistHandler,
     deleteFromPlaylistHandler,
+    isPlaylistBtnDisabled
   } = usePlaylist();
 
   const clickHandler = () => {
@@ -37,8 +38,20 @@ export const Modal = () => {
         isOpen: true,
       }));
     } else {
-      addPlaylistHandler(inputText);
-      setInputText("");
+      if(playlistList.find(playlist => playlist.title === inputText)){
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          msg: "Playlist Already Exists",
+          bg: "red",
+          isOpen: true,
+        }));
+        setInputText("");
+      }
+      else {
+
+        addPlaylistHandler(inputText);
+        setInputText("");
+      }
     }
   };
 
@@ -62,6 +75,7 @@ export const Modal = () => {
             return (
               <div className={styles.selectInputWrapper} key={playlist._id}>
                 <input
+                disabled={isPlaylistBtnDisabled}
                   type="checkbox"
                   id={playlist.title}
                   checked={playlist.videos.find(
@@ -97,7 +111,7 @@ export const Modal = () => {
           />
         </div>
         <div className={styles.btnWrappper}>
-          <button className={styles.createPlaylistBtn} onClick={clickHandler}>
+          <button className={styles.createPlaylistBtn} disabled={isPlaylistBtnDisabled} onClick={clickHandler}>
             Create New Playlist
           </button>
         </div>

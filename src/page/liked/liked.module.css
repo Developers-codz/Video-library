@@ -73,6 +73,9 @@
   background-color: var(--COLOR-BACKGROUND);
   color: var(--COLOR-PRIMARY);
 }
+.toggleMenu > button:disabled {
+  cursor:not-allowed;
+}
 .emptyLikeContainer {
   text-align: center;
   width: 75vw;

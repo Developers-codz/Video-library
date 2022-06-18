@@ -29,6 +29,9 @@
   border-radius: 10px;
   margin: 0.8rem 0;
 }
+.createPlaylistBtn:disabled,.selectInputWrapper > input:disabled{
+  cursor:not-allowed;
+}
 .inputWrapper {
   height: 6rem;
   padding: 1rem;
