@@ -11,7 +11,7 @@ export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
   const getFunctionName = useDeleteFunction();
   const clickHandler = () => {
-    setShowMenu(!showMenu);
+    setShowMenu(showMenu => !showMenu);
   };
   const { isDisabled } = useLike();
   const { isWatchBtnDisabled } = useWatchLater();
