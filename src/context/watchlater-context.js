@@ -3,7 +3,7 @@ import { useContext, createContext, useReducer,useState } from "react";
 import { POST_WATCHLATER_API } from "utils/apis";
 import { watchlaterReducer } from "reducer";
 import { useToast } from "./toast-context";
-import { useAuth } from "./auth-context";
+
 
 const WatchLaterContext = createContext(null);
 
@@ -13,7 +13,6 @@ const WatchLaterProvider = ({ children }) => {
   });
   const [isWatchBtnDisabled,setWatchDisabled] = useState(false)
   const { setToastVal } = useToast();
-  const { setLoading } = useAuth();
 
   const getWatchLaterVideos = async ()=>{
     const encodedToken = localStorage.getItem("token");

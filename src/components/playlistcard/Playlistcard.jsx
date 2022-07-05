@@ -11,7 +11,7 @@ export const Playlistcard = ({ item, currentPlaylistId, title }) => {
   const { deleteFromPlaylistHandler } = usePlaylist();
   return (
     <div className={styles.videoCard}>
-      <Link to={`/${item._id}`} className="decor-none light-text">
+      <Link to={`/video/${item.videoLink}`} className="decor-none light-text">
         <img src={item.gif} className={styles.image} />
       </Link>
       <div className={styles.videoDetailWrapper}>

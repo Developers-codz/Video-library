@@ -12,14 +12,20 @@ import { useDocumentTitle } from "functions";
 export const Video = () => {
   useDocumentTitle("Video");
   const { videos } = useVideo();
-  const { addToLikeHandler,isDisabled } = useLike();
-  const { addWatchcLaterHandler,isWatchBtnDisabled } = useWatchLater();
+  const {
+    addToLikeHandler,
+    isDisabled,
+    likedState: { likedList },
+    removeFromLikeHandler,
+  } = useLike();
+  const { addWatchcLaterHandler, removeFromWatchLaterHandler,isWatchBtnDisabled ,watchlaterState :{watchlaterList}} = useWatchLater();
   let params = useParams();
   const getVideo = (id) => videos?.find(({ videoLink }) => videoLink === id);
   let video = getVideo(params.videoId, 10);
- 
 
   const { setModalOpen } = useToast();
+  const isInLiked = (id) => likedList.find((likedCard) => likedCard._id === id);
+  const isInWatchLater = (id) => watchlaterList.find((watchcard) => watchcard._id === id)
 
   return (
     <div className={styles.videoContainer}>
@@ -37,17 +43,28 @@ export const Video = () => {
         </small>
       </div>
       <div className={styles.videoBtnWrapper}>
-        <button className={styles.videoActionBtn} disabled={isDisabled} onClick={() => addToLikeHandler(video)}>
-          <ThumbUpTwoToneIcon fontSize="large" />
-          <small>Like</small>
         
-        </button>
+          <button
+            className={styles.videoActionBtn}
+            disabled={isDisabled}
+            onClick={() => {
+              isInLiked(video?._id) ? 
+              removeFromLikeHandler(video._id) : 
+              addToLikeHandler(video)
+            }}
+          >
+            <ThumbUpTwoToneIcon fontSize="large" />
+            <small>{isInLiked(video?._id) ? "Liked" :"Like"}</small>
+          </button>
+     
+        
         <button
-          className={styles.videoActionBtn} disabled={isWatchBtnDisabled}
-          onClick={() => addWatchcLaterHandler(video)}
+          className={styles.videoActionBtn}
+          disabled={isWatchBtnDisabled}
+          onClick={() => {isInWatchLater(video._id) ?removeFromWatchLaterHandler(video._id) : addWatchcLaterHandler(video)}}
         >
           <BookmarkAddTwoToneIcon fontSize="large" />
-          <small>Save</small>
+          <small>{isInWatchLater(video._id) ? "Saved" :"Save"}</small>
         </button>
         <div
           className={styles.videoActionBtn}

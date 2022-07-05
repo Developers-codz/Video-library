@@ -11,15 +11,18 @@ export const SingleCard = ({ item, flag }) => {
   const [showMenu, setShowMenu] = useState(false);
   const getFunctionName = useDeleteFunction();
   const clickHandler = () => {
-    setShowMenu(showMenu => !showMenu);
+    setShowMenu((showMenu) => !showMenu);
   };
   const { isDisabled } = useLike();
   const { isWatchBtnDisabled } = useWatchLater();
-  const {isPlaylistBtnDisabled} = usePlaylist();
+  const { isPlaylistBtnDisabled } = usePlaylist();
 
   return (
     <div className={styles.videoCard} key={item._id}>
-      <NavLink to={`/video/${item._id}`} className="decor-none light-text">
+      <NavLink
+        to={`/video/${item.videoLink}`}
+        className="decor-none light-text"
+      >
         <img src={item.gif} className={styles.image} alt={item.title} />
       </NavLink>
       <div className={styles.videoDetailWrapper}>

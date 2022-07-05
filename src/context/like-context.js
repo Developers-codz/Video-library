@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer,useState } from "react";
 import { likedReducer } from "reducer/liked-reducer";
-import { useAuth } from "./auth-context";
 import axios from "axios";
 import { POST_LIKED_API } from "utils/apis";
 import { useToast } from "./toast-context";
@@ -8,10 +7,7 @@ import { useToast } from "./toast-context";
 const LikeContext = createContext();
 
 const LikeProvider = ({ children }) => {
-  const {
-    authState: { likes },
-    setLoading,
-  } = useAuth();
+
   const [likedState, likedDispatch] = useReducer(likedReducer, {
     likedList: [],
   });
